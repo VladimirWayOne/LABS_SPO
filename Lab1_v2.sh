@@ -68,7 +68,6 @@ function fileinfo() {
 }
 
 START=$(pwd)
-#cd "$1"
 fileinfo "$START"
 
 
