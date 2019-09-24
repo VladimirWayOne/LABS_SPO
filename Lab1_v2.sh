@@ -30,24 +30,20 @@ function ImSize() {
 
 function fileinfo() {
 	filelist=($(ls))  #массив, состоящий из файлов в текущей директории
-	for LIST in ${filelist[*]} 
+	for FILE in ${filelist[*]}
 	do
-	printf "$LIST\n"
-	done
-	for FILE in $@
-	do
-		#printf "$(basename ${FILE})\n"
+	
 		if [[ -d "$FILE" ]]
 		then
 			next_dir=$(ls "$FILE")
 			cd "$FILE"
-			#echo "$FILE"
 			fileinfo "$next_dir"
 			cd ..
 		fi
 
-		if [[ -f "${FILE}" ]]
+		if [[ -f "$FILE" ]]
 		then
+			echo "$FILE"
 			NAME=$(basename "${FILE}")	#Имя файла
 			EXT=$(extension)		#Расширение файла
 			SIZE=$(FileSize)		#Размер файла
