@@ -4,17 +4,17 @@ printf "Путь\tИмя\tРасширение\tРазмер\tДата Изме�
 RESULT=$(pwd)
 
 function extension() {
-	echo $(basename "${FILE}") | grep -Eo '\.[^.]+$'
+	echo $(basename "$FILE") | grep -Eo '\.[^.]+$'
 }
 
 function FileSize() {
-	b=$(wc -c < "${FILE}")
+	b=$(wc -c < "$FILE")
 	let "c = "$b" / 1024"
 	echo "$c"
 }
 
 function Date() {
-	d=$(date -r "${FILE}")
+	d=$(date -r "$FILE")
 	echo "$d"
 }
 
@@ -29,10 +29,12 @@ function ImSize() {
 }
 
 function fileinfo() {
+	SAVEIFS=$IFS
+	IFS=$(echo -en "\n\b")
 	filelist=($(ls))  #массив, состоящий из файлов в текущей директории
 	for FILE in ${filelist[*]}
 	do
-	
+		echo "$FILE"
 		if [[ -d "$FILE" ]]
 		then
 			next_dir=$(ls "$FILE")
@@ -43,8 +45,7 @@ function fileinfo() {
 
 		if [[ -f "$FILE" ]]
 		then
-			echo "$FILE"
-			NAME=$(basename "${FILE}")	#Имя файла
+			NAME=$(basename "$FILE")	#Имя файла
 			EXT=$(extension)		#Расширение файла
 			SIZE=$(FileSize)		#Размер файла
 			MOD_DATE=$(Date)		#Дата последней модификации
@@ -60,7 +61,6 @@ function fileinfo() {
 			fi
 			PREVIOUS=$(pwd)	#Директория, в которой сейчас находимся
 			cd "${RESULT}"	#Переход в директорию с файлом результата
-			#printf "$PREVIOUS\t$NAME\t$EXT\t$SIZE\t$MOD_DATE\t$DURATION\t$IMAGESIZE\n"
 			printf "$PREVIOUS\t$NAME\t$EXT\t$SIZE KB\t$MOD_DATE\t$DURATION\t$IMAGESIZE\n" >> result.csv
 			cd "${PREVIOUS}"
 		fi
@@ -68,6 +68,7 @@ function fileinfo() {
 }
 
 START=$(pwd)
+
 fileinfo "$START"
 
 
