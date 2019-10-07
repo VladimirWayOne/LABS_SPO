@@ -1,5 +1,6 @@
 #!/bin/bash
 function save() {
+	cd ~
 	echo 'Сохранить проект в...'
 	read way
 	if ! [ -d "$way" ] 
