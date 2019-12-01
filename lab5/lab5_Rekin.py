@@ -44,5 +44,6 @@ Sigma = np.sqrt(DX)             # среднеквадрат. отклонени
 
 Plotting(NumberOfBlock, ComissionPercentage, 'Percentage commission for each block', 'red', 'Комиссия, %')
 Plotting(NumberOfBlock, Comission_block, 'Commission for each block', 'm', 'Комиссия, ETH')
+Plotting(NumberOfBlock, Reward_block, 'Reward for each block', 'orange', 'Награда, ETH')
 
 print('MX= ', MX, '\nDX= ', DX, '\nMe= ', Me, '\nРазмах= ', Range, '\nδ= ', Sigma)
