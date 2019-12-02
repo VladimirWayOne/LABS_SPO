@@ -21,8 +21,6 @@ def mnk(x, y):                          #Метод наименьших ква�
 
 
 def plot(x, y, label):
-    #    x = np.array(x).reshape(-1, 1)
-    #    y = np.array(x).reshape(-1, 1)
     plt.scatter(x, y, linewidths=1)
     plt.title(label)
     plt.xlabel('Действительные бюллетени')
@@ -34,7 +32,6 @@ def VoiceInTime(x, label):                  # Диаграмма зависим�
     axeX = [10.00, 12.00, 15.00, 18.00]
     plt.bar(axeX, x, width=0.4, color='indigo')
     plt.title(label)
-   # plt.scatter(axeX, x, color='black')
     for i in axeX:
             plt.text(i-0.39, x[axeX.index(i)]+2.5, np.str(x[axeX.index(i)])+'%')
     plt.xlabel('Время')
@@ -56,11 +53,7 @@ def YavkaIProcent  (Beg, Am, Tix, Yavka):           # Зависимоссть �
     plt.scatter(Yavka, Am, color='green', s=10, label='Амосов')
     plt.scatter(Yavka, Tix, color='blue', s=10, label='Тихонова')
 
-
-
     plt.xlabel('Процент явки, %')
     plt.ylabel('Процент проголосовавших, %')
     plt.legend()
-   # plt.xlim([0, 101])
-   # plt.ylim([0, 101])
     plt.show()
