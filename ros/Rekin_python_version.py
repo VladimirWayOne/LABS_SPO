@@ -5,7 +5,6 @@ from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
 import math
 import time
-from std_srvs.srv import Empty
 from turtlesim.msg import Color
 from turtlesim.srv import SetPen
 from turtlesim.srv import TeleportAbsolute
