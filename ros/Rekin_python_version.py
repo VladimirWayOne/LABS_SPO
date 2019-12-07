@@ -14,6 +14,14 @@ y = 0
 z = 0
 yaw = 0
 
+def background_color(r, g, b):
+	rospy.wait_for_service('clear')
+	clear_b = rospy.ServiceProxy('clear', Empty)
+	rospy.set_param('/background_b',b)
+	rospy.set_param('/background_r',r)
+	rospy.set_param('/background_g',g)
+	clear_b()
+
 def teleport(x,y,angle):
 	rospy.wait_for_service('turtle1/teleport_absolute')
 	turtle1_teleport = rospy.ServiceProxy('turtle1/teleport_absolute', TeleportAbsolute)
@@ -185,10 +193,10 @@ if __name__ == '__main__':
         position_topic = 'turtle1/pose'
         pose_subscriber = rospy.Subscriber(position_topic, Pose, callPoseback)
         time.sleep(1)  
-
+	background_color(255,255,255)
 	teleport(0.2, 5, 0)
         pen_color(204, 153, 255)
-
+	
         two()
 	next_num()
 	four()
