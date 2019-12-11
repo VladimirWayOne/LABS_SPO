@@ -183,8 +183,6 @@ if __name__ == '__main__':
     try:
 
         rospy.init_node('Turtlesim_number', anonymous=True)
-        cmd_vel_topic = '/turtle1/cmd_vel'
-        velocity_publisher = rospy.Publisher(cmd_vel_topic, Twist, queue_size=10)
         position_topic = 'turtle1/pose'
         pose_subscriber = rospy.Subscriber(position_topic, Pose, callPoseback)
         time.sleep(1)  
