@@ -55,12 +55,10 @@ def rotate(angle, clockwise):
         vel_msg.angular.z = abs(ang_speed)
 
     angle_moved = 0
-    loop_rate = rospy.Rate(120)
     cmd_vel_topic = 'turtle1/cmd_vel'
     velocity_publisher = rospy.Publisher(cmd_vel_topic, Twist, queue_size=10)
     while True:
         velocity_publisher.publish(vel_msg)
-        loop_rate.sleep()
         angle_moved = abs(yaw - yaw0)
         if not (angle_moved < rel_ang):
             break
@@ -88,16 +86,13 @@ def move(speed, distance, is_forward):
         velocity_message.linear.x = -abs(speed)
 
     distance_moved = 0.0
-    loop_rate = rospy.Rate(10)
+    
     cmd_vel_topic = 'turtle1/cmd_vel'
     velocity_publisher = rospy.Publisher(cmd_vel_topic, Twist, queue_size=10)
 
     while True:
         # rospy.loginfo('Turtle moves forward')
         velocity_publisher.publish(velocity_message)
-
-        loop_rate.sleep()
-
         distance_moved = abs(0.4 * math.sqrt(((x - x0) ** 2) + ((y - y0) ** 2)))
         # print distance_moved
         if not (distance_moved < distance):
