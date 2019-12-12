@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d237bd246c554097b7f5cfcf20de396d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+                <div style="position: fixed; 
+                            bottom: 50px; left: 50px; width: 125px; height: 350px; 
+                            border:4px solid black; z-index:9999; font-size:14px;
+                            background:#FFFFFF;
+                            ">&nbsp; Цвет флага зависит от количества проголосовавших <br>
+                              &nbsp;100 &nbsp; <i class="fa fa-flag fa-lg" style="color:#1AFF00"></i><br>
+                              &nbsp;100-200 &nbsp; <i class="fa fa-flag fa-lg" style="color:#91FF00"></i>
+                              &nbsp;200-300 &nbsp; <i class="fa fa-flag fa-lg" style="color:#BCFF00"></i>
+                              &nbsp;300-400 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FFEF00"></i>
+                              &nbsp;400-500 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FFA200"></i>
+                              &nbsp;500-600 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FF8000"></i>
+                              &nbsp;600-700 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FF4D00"></i>
+                              &nbsp;700-800 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FA6039"></i>
+                              &nbsp;800< &nbsp; <i class="fa fa-flag fa-lg" style="color:#FF0000"></i>
+                </div>
+                
+    
+            <div class="folium-map" id="map_d237bd246c554097b7f5cfcf20de396d" ></div>
+        
+</body>
+<script>    
+    
+            var map_d237bd246c554097b7f5cfcf20de396d = L.map(
+                "map_d237bd246c554097b7f5cfcf20de396d",
+                {
+                    center: [59.97604, 30.45],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11.5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_8e81c3d9e3de4657b6db6960fa31fb68 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var marker_7039afc6e0514d6097ef8149d044a1d7 = L.marker(
+                [59.95328701944101, 30.46530244351835],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_560e14c67a694d0e8e03b95600d57284 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_7039afc6e0514d6097ef8149d044a1d7.setIcon(icon_560e14c67a694d0e8e03b95600d57284);
+        
+    
+        var popup_a229846fc6e442089892c5cbfda4d871 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_5ac8b3c9604446d5baaebed8e94be172 = $(`<div id="html_5ac8b3c9604446d5baaebed8e94be172" style="width: 100.0%; height: 100.0%;"><h5> УИК № 973</h5><br><b> Амосов Михаил Иванович </b>: 10.19% <br><b> Беглов Александр Дмитриевич </b>: 67.88% <br><b> Тихонова Надежда Геннадьевна </b>: 19.42% <br><b> Явка </b>: 27.75 %<br><b> Количество проголосовавших</b>: 520 </div>`)[0];
+            popup_a229846fc6e442089892c5cbfda4d871.setContent(html_5ac8b3c9604446d5baaebed8e94be172);
+        
+
+        marker_7039afc6e0514d6097ef8149d044a1d7.bindPopup(popup_a229846fc6e442089892c5cbfda4d871)
+        ;
+
+        
+    
+    
+            var marker_9eb0f68eb5e249e680317f34a1e37607 = L.marker(
+                [59.9528746411968, 30.465704941681658],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_59575cf7fb26459faad5d184a40f520e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_9eb0f68eb5e249e680317f34a1e37607.setIcon(icon_59575cf7fb26459faad5d184a40f520e);
+        
+    
+        var popup_446889b575a14193901987b9f61e4fbd = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_ab0ab369b9e442caa367692649df0930 = $(`<div id="html_ab0ab369b9e442caa367692649df0930" style="width: 100.0%; height: 100.0%;"><h5> УИК № 974</h5><br><b> Амосов Михаил Иванович </b>: 12.18% <br><b> Беглов Александр Дмитриевич </b>: 66.03% <br><b> Тихонова Надежда Геннадьевна </b>: 19.66% <br><b> Явка </b>: 24.97 %<br><b> Количество проголосовавших</b>: 468 </div>`)[0];
+            popup_446889b575a14193901987b9f61e4fbd.setContent(html_ab0ab369b9e442caa367692649df0930);
+        
+
+        marker_9eb0f68eb5e249e680317f34a1e37607.bindPopup(popup_446889b575a14193901987b9f61e4fbd)
+        ;
+
+        
+    
+    
+            var marker_4a2b2be776cf4910b6491db3a47784af = L.marker(
+                [59.9484696017445, 30.465692421415728],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_b28b7db47f0349e8bba2c73ae6281c49 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_4a2b2be776cf4910b6491db3a47784af.setIcon(icon_b28b7db47f0349e8bba2c73ae6281c49);
+        
+    
+        var popup_75dc2e00dfa54be5968a2b1c5bf0693d = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_c80b22e26ea44c41b67f3415e405932c = $(`<div id="html_c80b22e26ea44c41b67f3415e405932c" style="width: 100.0%; height: 100.0%;"><h5> УИК № 975</h5><br><b> Амосов Михаил Иванович </b>: 11.85% <br><b> Беглов Александр Дмитриевич </b>: 63.95% <br><b> Тихонова Надежда Геннадьевна </b>: 21.98% <br><b> Явка </b>: 21.61 %<br><b> Количество проголосовавших</b>: 405 </div>`)[0];
+            popup_75dc2e00dfa54be5968a2b1c5bf0693d.setContent(html_c80b22e26ea44c41b67f3415e405932c);
+        
+
+        marker_4a2b2be776cf4910b6491db3a47784af.bindPopup(popup_75dc2e00dfa54be5968a2b1c5bf0693d)
+        ;
+
+        
+    
+    
+            var marker_b6253a2df331439cad7ce30514cc114f = L.marker(
+                [59.948651090888305, 30.46638259867889],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_9b0a4d0250f84ce7a667304fdf31f02e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_b6253a2df331439cad7ce30514cc114f.setIcon(icon_9b0a4d0250f84ce7a667304fdf31f02e);
+        
+    
+        var popup_520180d78acd4ad6a4a4b3d5fb94da6b = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_c33633f688094fadb663477b8d175327 = $(`<div id="html_c33633f688094fadb663477b8d175327" style="width: 100.0%; height: 100.0%;"><h5> УИК № 976</h5><br><b> Амосов Михаил Иванович </b>: 16.10% <br><b> Беглов Александр Дмитриевич </b>: 62.92% <br><b> Тихонова Надежда Геннадьевна </b>: 19.20% <br><b> Явка </b>: 36.13 %<br><b> Количество проголосовавших</b>: 677 </div>`)[0];
+            popup_520180d78acd4ad6a4a4b3d5fb94da6b.setContent(html_c33633f688094fadb663477b8d175327);
+        
+
+        marker_b6253a2df331439cad7ce30514cc114f.bindPopup(popup_520180d78acd4ad6a4a4b3d5fb94da6b)
+        ;
+
+        
+    
+    
+            var marker_69d10b70176b4a168136209751f7cf3a = L.marker(
+                [59.94845100000001, 30.46632999999997],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_46534da758744589a5497cf494c7d135 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_69d10b70176b4a168136209751f7cf3a.setIcon(icon_46534da758744589a5497cf494c7d135);
+        
+    
+        var popup_b79494057fdd4870b7a5b483dab5e4f0 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_dec63c4cc6de4b17ab941c59013eaba8 = $(`<div id="html_dec63c4cc6de4b17ab941c59013eaba8" style="width: 100.0%; height: 100.0%;"><h5> УИК № 977</h5><br><b> Амосов Михаил Иванович </b>: 13.83% <br><b> Беглов Александр Дмитриевич </b>: 65.72% <br><b> Тихонова Надежда Геннадьевна </b>: 16.86% <br><b> Явка </b>: 28.18 %<br><b> Количество проголосовавших</b>: 528 </div>`)[0];
+            popup_b79494057fdd4870b7a5b483dab5e4f0.setContent(html_dec63c4cc6de4b17ab941c59013eaba8);
+        
+
+        marker_69d10b70176b4a168136209751f7cf3a.bindPopup(popup_b79494057fdd4870b7a5b483dab5e4f0)
+        ;
+
+        
+    
+    
+            var marker_ccd8a2a678ac4b69ae2008b9011cdf93 = L.marker(
+                [59.9481448907755, 30.46604818289159],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_fccd75de68f84ed5871c13dbb61a6fdf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_ccd8a2a678ac4b69ae2008b9011cdf93.setIcon(icon_fccd75de68f84ed5871c13dbb61a6fdf);
+        
+    
+        var popup_529cfe412fd94243b7e2bda926489db7 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_39471d2e02864eb2820f1f2db1742ea7 = $(`<div id="html_39471d2e02864eb2820f1f2db1742ea7" style="width: 100.0%; height: 100.0%;"><h5> УИК № 978</h5><br><b> Амосов Михаил Иванович </b>: 10.96% <br><b> Беглов Александр Дмитриевич </b>: 64.74% <br><b> Тихонова Надежда Геннадьевна </b>: 21.12% <br><b> Явка </b>: 26.79 %<br><b> Количество проголосовавших</b>: 502 </div>`)[0];
+            popup_529cfe412fd94243b7e2bda926489db7.setContent(html_39471d2e02864eb2820f1f2db1742ea7);
+        
+
+        marker_ccd8a2a678ac4b69ae2008b9011cdf93.bindPopup(popup_529cfe412fd94243b7e2bda926489db7)
+        ;
+
+        
+    
+    
+            var marker_4afd6452bff84281bbc68d481964872f = L.marker(
+                [59.94845100000001, 30.46632999999997],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_ca2843dc6a534bca8c48d66de77086ed = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_4afd6452bff84281bbc68d481964872f.setIcon(icon_ca2843dc6a534bca8c48d66de77086ed);
+        
+    
+        var popup_82f6d0b5c5284498a487c22bd6c5dc5e = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_a9e83816c8064568af5d7a15825e9665 = $(`<div id="html_a9e83816c8064568af5d7a15825e9665" style="width: 100.0%; height: 100.0%;"><h5> УИК № 979</h5><br><b> Амосов Михаил Иванович </b>: 14.16% <br><b> Беглов Александр Дмитриевич </b>: 63.80% <br><b> Тихонова Надежда Геннадьевна </b>: 18.64% <br><b> Явка </b>: 29.78 %<br><b> Количество проголосовавших</b>: 558 </div>`)[0];
+            popup_82f6d0b5c5284498a487c22bd6c5dc5e.setContent(html_a9e83816c8064568af5d7a15825e9665);
+        
+
+        marker_4afd6452bff84281bbc68d481964872f.bindPopup(popup_82f6d0b5c5284498a487c22bd6c5dc5e)
+        ;
+
+        
+    
+    
+            var marker_dcd4d20c65a841509f2836c469e3f0b0 = L.marker(
+                [59.94831569278679, 30.466781051531864],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_e3427805cc3d47aab9e1348dbbd01c70 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_dcd4d20c65a841509f2836c469e3f0b0.setIcon(icon_e3427805cc3d47aab9e1348dbbd01c70);
+        
+    
+        var popup_50ef652bdc3d4d7da6c01ffaad4a62c7 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_c77ea4ce7bdd4129bb71aafd0ae19675 = $(`<div id="html_c77ea4ce7bdd4129bb71aafd0ae19675" style="width: 100.0%; height: 100.0%;"><h5> УИК № 980</h5><br><b> Амосов Михаил Иванович </b>: 12.83% <br><b> Беглов Александр Дмитриевич </b>: 65.85% <br><b> Тихонова Надежда Геннадьевна </b>: 19.43% <br><b> Явка </b>: 28.28 %<br><b> Количество проголосовавших</b>: 530 </div>`)[0];
+            popup_50ef652bdc3d4d7da6c01ffaad4a62c7.setContent(html_c77ea4ce7bdd4129bb71aafd0ae19675);
+        
+
+        marker_dcd4d20c65a841509f2836c469e3f0b0.bindPopup(popup_50ef652bdc3d4d7da6c01ffaad4a62c7)
+        ;
+
+        
+    
+    
+            var marker_5df602f0935844ee92726e2e4d389a3e = L.marker(
+                [59.94845100000001, 30.46632999999997],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_40ada8aeb15a49f2856b3772d0ecb7ca = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_5df602f0935844ee92726e2e4d389a3e.setIcon(icon_40ada8aeb15a49f2856b3772d0ecb7ca);
+        
+    
+        var popup_4947b2874973455ca335a32fc889ba45 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_849f72b60907478587114d9592ff8889 = $(`<div id="html_849f72b60907478587114d9592ff8889" style="width: 100.0%; height: 100.0%;"><h5> УИК № 981</h5><br><b> Амосов Михаил Иванович </b>: 19.95% <br><b> Беглов Александр Дмитриевич </b>: 58.10% <br><b> Тихонова Надежда Геннадьевна </b>: 19.70% <br><b> Явка </b>: 21.4 %<br><b> Количество проголосовавших</b>: 401 </div>`)[0];
+            popup_4947b2874973455ca335a32fc889ba45.setContent(html_849f72b60907478587114d9592ff8889);
+        
+
+        marker_5df602f0935844ee92726e2e4d389a3e.bindPopup(popup_4947b2874973455ca335a32fc889ba45)
+        ;
+
+        
+    
+    
+            var marker_d86da3606fb64eb39fbdc1049a4910d4 = L.marker(
+                [59.939232099077984, 30.4736449862771],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_d202c0a3a6404789a7b14d904eaafff6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_d86da3606fb64eb39fbdc1049a4910d4.setIcon(icon_d202c0a3a6404789a7b14d904eaafff6);
+        
+    
+        var popup_20a6b5411a2640a2a397e6251e5f445f = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_ace559f89cc64ca1944be45ad7cc21cb = $(`<div id="html_ace559f89cc64ca1944be45ad7cc21cb" style="width: 100.0%; height: 100.0%;"><h5> УИК № 982</h5><br><b> Амосов Михаил Иванович </b>: 17.25% <br><b> Беглов Александр Дмитриевич </b>: 63.56% <br><b> Тихонова Надежда Геннадьевна </b>: 17.61% <br><b> Явка </b>: 30.31 %<br><b> Количество проголосовавших</b>: 568 </div>`)[0];
+            popup_20a6b5411a2640a2a397e6251e5f445f.setContent(html_ace559f89cc64ca1944be45ad7cc21cb);
+        
+
+        marker_d86da3606fb64eb39fbdc1049a4910d4.bindPopup(popup_20a6b5411a2640a2a397e6251e5f445f)
+        ;
+
+        
+    
+    
+            var marker_783a71c7ce5842509e9444a4505874d4 = L.marker(
+                [59.9390465597992, 30.473146920210887],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_2a28cdb634774f999ca259ff023076a3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_783a71c7ce5842509e9444a4505874d4.setIcon(icon_2a28cdb634774f999ca259ff023076a3);
+        
+    
+        var popup_8e9cd33f444c4553bb807c7f4f117c1f = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_c614ccc183724899ab76443bda5168bc = $(`<div id="html_c614ccc183724899ab76443bda5168bc" style="width: 100.0%; height: 100.0%;"><h5> УИК № 983</h5><br><b> Амосов Михаил Иванович </b>: 14.97% <br><b> Беглов Александр Дмитриевич </b>: 59.04% <br><b> Тихонова Надежда Геннадьевна </b>: 23.70% <br><b> Явка </b>: 25.67 %<br><b> Количество проголосовавших</b>: 481 </div>`)[0];
+            popup_8e9cd33f444c4553bb807c7f4f117c1f.setContent(html_c614ccc183724899ab76443bda5168bc);
+        
+
+        marker_783a71c7ce5842509e9444a4505874d4.bindPopup(popup_8e9cd33f444c4553bb807c7f4f117c1f)
+        ;
+
+        
+    
+    
+            var marker_db6f4d02d4d847a291f36b5ec037d3d4 = L.marker(
+                [59.93878617175089, 30.47350979691627],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_b1afba18281147cb8720a8551d166908 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#BCFF00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_db6f4d02d4d847a291f36b5ec037d3d4.setIcon(icon_b1afba18281147cb8720a8551d166908);
+        
+    
+        var popup_f50db1b05eb049be91c26eb86602a00e = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_1b577b035ac449da82e543514d6a4a1e = $(`<div id="html_1b577b035ac449da82e543514d6a4a1e" style="width: 100.0%; height: 100.0%;"><h5> УИК № 984</h5><br><b> Амосов Михаил Иванович </b>: 16.25% <br><b> Беглов Александр Дмитриевич </b>: 59.01% <br><b> Тихонова Надежда Геннадьевна </b>: 22.26% <br><b> Явка </b>: 15.1 %<br><b> Количество проголосовавших</b>: 283 </div>`)[0];
+            popup_f50db1b05eb049be91c26eb86602a00e.setContent(html_1b577b035ac449da82e543514d6a4a1e);
+        
+
+        marker_db6f4d02d4d847a291f36b5ec037d3d4.bindPopup(popup_f50db1b05eb049be91c26eb86602a00e)
+        ;
+
+        
+    
+    
+            var marker_5b02e6046d814d0c842b5938e5b59ae3 = L.marker(
+                [59.93897487114966, 30.474086130507164],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_9b75d7b76f6142c8a048dedd6be66d12 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_5b02e6046d814d0c842b5938e5b59ae3.setIcon(icon_9b75d7b76f6142c8a048dedd6be66d12);
+        
+    
+        var popup_21f1915ab21244cba2bc455d53b53805 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_8c48bebc1e894a8985ba20d4398a1992 = $(`<div id="html_8c48bebc1e894a8985ba20d4398a1992" style="width: 100.0%; height: 100.0%;"><h5> УИК № 985</h5><br><b> Амосов Михаил Иванович </b>: 17.50% <br><b> Беглов Александр Дмитриевич </b>: 57.46% <br><b> Тихонова Надежда Геннадьевна </b>: 23.27% <br><b> Явка </b>: 33.24 %<br><b> Количество проголосовавших</b>: 623 </div>`)[0];
+            popup_21f1915ab21244cba2bc455d53b53805.setContent(html_8c48bebc1e894a8985ba20d4398a1992);
+        
+
+        marker_5b02e6046d814d0c842b5938e5b59ae3.bindPopup(popup_21f1915ab21244cba2bc455d53b53805)
+        ;
+
+        
+    
+    
+            var marker_46f3a17beb264aca967656b0715508dc = L.marker(
+                [59.939752, 30.475521100000037],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_2128cf4da399411ca8cb514a29ab9d39 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_46f3a17beb264aca967656b0715508dc.setIcon(icon_2128cf4da399411ca8cb514a29ab9d39);
+        
+    
+        var popup_8d3f49ce49a94d1e9b45b9975aeddf85 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_eda9f4cf69744512b8010c0a24a32c37 = $(`<div id="html_eda9f4cf69744512b8010c0a24a32c37" style="width: 100.0%; height: 100.0%;"><h5> УИК № 986</h5><br><b> Амосов Михаил Иванович </b>: 14.97% <br><b> Беглов Александр Дмитриевич </b>: 58.88% <br><b> Тихонова Надежда Геннадьевна </b>: 23.19% <br><b> Явка </b>: 32.44 %<br><b> Количество проголосовавших</b>: 608 </div>`)[0];
+            popup_8d3f49ce49a94d1e9b45b9975aeddf85.setContent(html_eda9f4cf69744512b8010c0a24a32c37);
+        
+
+        marker_46f3a17beb264aca967656b0715508dc.bindPopup(popup_8d3f49ce49a94d1e9b45b9975aeddf85)
+        ;
+
+        
+    
+    
+            var marker_bc590e8dbf414a49b465765bc7b418b2 = L.marker(
+                [59.955957725312906, 30.472752338670418],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_94e3bad4660c484cbba3c9ae95e6d3e5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFEF00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_bc590e8dbf414a49b465765bc7b418b2.setIcon(icon_94e3bad4660c484cbba3c9ae95e6d3e5);
+        
+    
+        var popup_d40833d345be421d8dee60f2d66b6561 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_70dd95c4e4be4f6f9b13a0e0637345c3 = $(`<div id="html_70dd95c4e4be4f6f9b13a0e0637345c3" style="width: 100.0%; height: 100.0%;"><h5> УИК № 987</h5><br><b> Амосов Михаил Иванович </b>: 13.91% <br><b> Беглов Александр Дмитриевич </b>: 69.03% <br><b> Тихонова Надежда Геннадьевна </b>: 15.75% <br><b> Явка </b>: 20.33 %<br><b> Количество проголосовавших</b>: 381 </div>`)[0];
+            popup_d40833d345be421d8dee60f2d66b6561.setContent(html_70dd95c4e4be4f6f9b13a0e0637345c3);
+        
+
+        marker_bc590e8dbf414a49b465765bc7b418b2.bindPopup(popup_d40833d345be421d8dee60f2d66b6561)
+        ;
+
+        
+    
+    
+            var marker_afc7a330fb3b46fca7db85bbd4096618 = L.marker(
+                [59.95560078991321, 30.47263158922142],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_5eb326c805584728851a454426cf5490 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_afc7a330fb3b46fca7db85bbd4096618.setIcon(icon_5eb326c805584728851a454426cf5490);
+        
+    
+        var popup_e897db6774574de5a186f76df26ce018 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_0b638b6ec8c54151b56bc3ba5d27cec1 = $(`<div id="html_0b638b6ec8c54151b56bc3ba5d27cec1" style="width: 100.0%; height: 100.0%;"><h5> УИК № 988</h5><br><b> Амосов Михаил Иванович </b>: 12.03% <br><b> Беглов Александр Дмитриевич </b>: 64.91% <br><b> Тихонова Надежда Геннадьевна </b>: 21.09% <br><b> Явка </b>: 32.39 %<br><b> Количество проголосовавших</b>: 607 </div>`)[0];
+            popup_e897db6774574de5a186f76df26ce018.setContent(html_0b638b6ec8c54151b56bc3ba5d27cec1);
+        
+
+        marker_afc7a330fb3b46fca7db85bbd4096618.bindPopup(popup_e897db6774574de5a186f76df26ce018)
+        ;
+
+        
+    
+    
+            var marker_4cbe00b1f8fb4ec1a7a0f05532283e5e = L.marker(
+                [59.95586100000001, 30.47279800000001],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_a3dd10dd07994ac6943b9e0ae89107a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_4cbe00b1f8fb4ec1a7a0f05532283e5e.setIcon(icon_a3dd10dd07994ac6943b9e0ae89107a7);
+        
+    
+        var popup_adb8afc2dee449ddb30cf226cbb8d1a4 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_87845b131adc4b3fb659f42b2f9f7b51 = $(`<div id="html_87845b131adc4b3fb659f42b2f9f7b51" style="width: 100.0%; height: 100.0%;"><h5> УИК № 989</h5><br><b> Амосов Михаил Иванович </b>: 10.79% <br><b> Беглов Александр Дмитриевич </b>: 69.78% <br><b> Тихонова Надежда Геннадьевна </b>: 17.75% <br><b> Явка </b>: 22.25 %<br><b> Количество проголосовавших</b>: 417 </div>`)[0];
+            popup_adb8afc2dee449ddb30cf226cbb8d1a4.setContent(html_87845b131adc4b3fb659f42b2f9f7b51);
+        
+
+        marker_4cbe00b1f8fb4ec1a7a0f05532283e5e.bindPopup(popup_adb8afc2dee449ddb30cf226cbb8d1a4)
+        ;
+
+        
+    
+    
+            var marker_17f1b86cac384b8395326d6f7deb767e = L.marker(
+                [59.95521983523187, 30.478842185764268],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_21f251b005d04183a4910e41f81f3d1b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_17f1b86cac384b8395326d6f7deb767e.setIcon(icon_21f251b005d04183a4910e41f81f3d1b);
+        
+    
+        var popup_240224bd239149f98e8f91540859bd91 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_4d366ba347384f639db4aba6f67457e3 = $(`<div id="html_4d366ba347384f639db4aba6f67457e3" style="width: 100.0%; height: 100.0%;"><h5> УИК № 990</h5><br><b> Амосов Михаил Иванович </b>: 17.29% <br><b> Беглов Александр Дмитриевич </b>: 59.87% <br><b> Тихонова Надежда Геннадьевна </b>: 20.07% <br><b> Явка </b>: 32.71 %<br><b> Количество проголосовавших</b>: 613 </div>`)[0];
+            popup_240224bd239149f98e8f91540859bd91.setContent(html_4d366ba347384f639db4aba6f67457e3);
+        
+
+        marker_17f1b86cac384b8395326d6f7deb767e.bindPopup(popup_240224bd239149f98e8f91540859bd91)
+        ;
+
+        
+    
+    
+            var marker_8b4c9ad968574c33aede746a0d33b4f9 = L.marker(
+                [59.954898160847854, 30.478640936682606],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_97116a3aea2b4c798f509de6238a9ce1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_8b4c9ad968574c33aede746a0d33b4f9.setIcon(icon_97116a3aea2b4c798f509de6238a9ce1);
+        
+    
+        var popup_e6a321cdf32c4c5bb9f427774060a050 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_3eef34b9e8b649d0a0be645ddcb68f46 = $(`<div id="html_3eef34b9e8b649d0a0be645ddcb68f46" style="width: 100.0%; height: 100.0%;"><h5> УИК № 991</h5><br><b> Амосов Михаил Иванович </b>: 14.10% <br><b> Беглов Александр Дмитриевич </b>: 67.11% <br><b> Тихонова Надежда Геннадьевна </b>: 16.17% <br><b> Явка </b>: 28.39 %<br><b> Количество проголосовавших</b>: 532 </div>`)[0];
+            popup_e6a321cdf32c4c5bb9f427774060a050.setContent(html_3eef34b9e8b649d0a0be645ddcb68f46);
+        
+
+        marker_8b4c9ad968574c33aede746a0d33b4f9.bindPopup(popup_e6a321cdf32c4c5bb9f427774060a050)
+        ;
+
+        
+    
+    
+            var marker_3ff502899a464be48ddc6d1b8edadfb6 = L.marker(
+                [59.95481327509999, 30.4792245590194],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_ef51f85637834a30ab498e2fbc406e0f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_3ff502899a464be48ddc6d1b8edadfb6.setIcon(icon_ef51f85637834a30ab498e2fbc406e0f);
+        
+    
+        var popup_9c8541dbb7eb40c7a7c358a7f03744cd = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_8853511df3424ae59aa2c8dd4a399986 = $(`<div id="html_8853511df3424ae59aa2c8dd4a399986" style="width: 100.0%; height: 100.0%;"><h5> УИК № 992</h5><br><b> Амосов Михаил Иванович </b>: 16.46% <br><b> Беглов Александр Дмитриевич </b>: 61.93% <br><b> Тихонова Надежда Геннадьевна </b>: 20.37% <br><b> Явка </b>: 25.93 %<br><b> Количество проголосовавших</b>: 486 </div>`)[0];
+            popup_9c8541dbb7eb40c7a7c358a7f03744cd.setContent(html_8853511df3424ae59aa2c8dd4a399986);
+        
+
+        marker_3ff502899a464be48ddc6d1b8edadfb6.bindPopup(popup_9c8541dbb7eb40c7a7c358a7f03744cd)
+        ;
+
+        
+    
+    
+            var marker_85dad2527d214e26a0e6be55d64bde2a = L.marker(
+                [59.952308494496236, 30.479210290325597],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_e6d794f7b3b54123b1114253f3703233 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_85dad2527d214e26a0e6be55d64bde2a.setIcon(icon_e6d794f7b3b54123b1114253f3703233);
+        
+    
+        var popup_bdf6cef5bbc04309ac9e7ab39f0bfaee = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_0da4db2d612a4918a1ff615f64b8c11f = $(`<div id="html_0da4db2d612a4918a1ff615f64b8c11f" style="width: 100.0%; height: 100.0%;"><h5> УИК № 993</h5><br><b> Амосов Михаил Иванович </b>: 14.55% <br><b> Беглов Александр Дмитриевич </b>: 63.48% <br><b> Тихонова Надежда Геннадьевна </b>: 18.94% <br><b> Явка </b>: 35.22 %<br><b> Количество проголосовавших</b>: 660 </div>`)[0];
+            popup_bdf6cef5bbc04309ac9e7ab39f0bfaee.setContent(html_0da4db2d612a4918a1ff615f64b8c11f);
+        
+
+        marker_85dad2527d214e26a0e6be55d64bde2a.bindPopup(popup_bdf6cef5bbc04309ac9e7ab39f0bfaee)
+        ;
+
+        
+    
+    
+            var marker_a78c788da57d46b4a4217d62eda833d6 = L.marker(
+                [59.95196360363043, 30.479556933457044],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_4f4ba2fee559409198b0a9c36285943e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_a78c788da57d46b4a4217d62eda833d6.setIcon(icon_4f4ba2fee559409198b0a9c36285943e);
+        
+    
+        var popup_61d4623393084c4aaf2c7284100140f5 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_9af65660a6b64e7dba706fbb57e115c8 = $(`<div id="html_9af65660a6b64e7dba706fbb57e115c8" style="width: 100.0%; height: 100.0%;"><h5> УИК № 994</h5><br><b> Амосов Михаил Иванович </b>: 17.36% <br><b> Беглов Александр Дмитриевич </b>: 59.91% <br><b> Тихонова Надежда Геннадьевна </b>: 21.20% <br><b> Явка </b>: 34.74 %<br><b> Количество проголосовавших</b>: 651 </div>`)[0];
+            popup_61d4623393084c4aaf2c7284100140f5.setContent(html_9af65660a6b64e7dba706fbb57e115c8);
+        
+
+        marker_a78c788da57d46b4a4217d62eda833d6.bindPopup(popup_61d4623393084c4aaf2c7284100140f5)
+        ;
+
+        
+    
+    
+            var marker_585d05e7d4a94ee39e51b58638744c2c = L.marker(
+                [59.95247870996762, 30.479885760096387],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_2ab686178e2842e7a77308b78e3bae24 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_585d05e7d4a94ee39e51b58638744c2c.setIcon(icon_2ab686178e2842e7a77308b78e3bae24);
+        
+    
+        var popup_72177fdb01e7486b9a349c62eca8a2ee = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_7d9a262b8f85494a9023e79cbaff6358 = $(`<div id="html_7d9a262b8f85494a9023e79cbaff6358" style="width: 100.0%; height: 100.0%;"><h5> УИК № 995</h5><br><b> Амосов Михаил Иванович </b>: 12.71% <br><b> Беглов Александр Дмитриевич </b>: 66.22% <br><b> Тихонова Надежда Геннадьевна </b>: 18.39% <br><b> Явка </b>: 31.91 %<br><b> Количество проголосовавших</b>: 598 </div>`)[0];
+            popup_72177fdb01e7486b9a349c62eca8a2ee.setContent(html_7d9a262b8f85494a9023e79cbaff6358);
+        
+
+        marker_585d05e7d4a94ee39e51b58638744c2c.bindPopup(popup_72177fdb01e7486b9a349c62eca8a2ee)
+        ;
+
+        
+    
+    
+            var marker_114c089cad0a42299568c9ada13b7911 = L.marker(
+                [59.95213382087308, 30.480232403227827],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_1075009a3fd94c4a82e5ab480563ba61 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_114c089cad0a42299568c9ada13b7911.setIcon(icon_1075009a3fd94c4a82e5ab480563ba61);
+        
+    
+        var popup_cda297d4ad7e405d88440bc544a78a0e = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_69f6ee4e64b04a38948351f95e1a4b5b = $(`<div id="html_69f6ee4e64b04a38948351f95e1a4b5b" style="width: 100.0%; height: 100.0%;"><h5> УИК № 996</h5><br><b> Амосов Михаил Иванович </b>: 11.88% <br><b> Беглов Александр Дмитриевич </b>: 65.84% <br><b> Тихонова Надежда Геннадьевна </b>: 20.46% <br><b> Явка </b>: 32.34 %<br><b> Количество проголосовавших</b>: 606 </div>`)[0];
+            popup_cda297d4ad7e405d88440bc544a78a0e.setContent(html_69f6ee4e64b04a38948351f95e1a4b5b);
+        
+
+        marker_114c089cad0a42299568c9ada13b7911.bindPopup(popup_cda297d4ad7e405d88440bc544a78a0e)
+        ;
+
+        
+    
+    
+            var marker_e45295fa470c4353b533274d1f6171b5 = L.marker(
+                [59.94772371951109, 30.48167425509491],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_0a4d36d5021b4adaab7601f45a7ae339 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_e45295fa470c4353b533274d1f6171b5.setIcon(icon_0a4d36d5021b4adaab7601f45a7ae339);
+        
+    
+        var popup_88bd0977a969485e839f921fed5b41df = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_bc88dcb2ad7d4ef0b5621a82fb52910e = $(`<div id="html_bc88dcb2ad7d4ef0b5621a82fb52910e" style="width: 100.0%; height: 100.0%;"><h5> УИК № 997</h5><br><b> Амосов Михаил Иванович </b>: 13.27% <br><b> Беглов Александр Дмитриевич </b>: 62.93% <br><b> Тихонова Надежда Геннадьевна </b>: 21.74% <br><b> Явка </b>: 23.32 %<br><b> Количество проголосовавших</b>: 437 </div>`)[0];
+            popup_88bd0977a969485e839f921fed5b41df.setContent(html_bc88dcb2ad7d4ef0b5621a82fb52910e);
+        
+
+        marker_e45295fa470c4353b533274d1f6171b5.bindPopup(popup_88bd0977a969485e839f921fed5b41df)
+        ;
+
+        
+    
+    
+            var marker_a7cea8a44cce4b47a3b2c4b9a26d8e20 = L.marker(
+                [59.94737679894436, 30.482026440987802],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_0941086f5f8c497fa144366feff03a88 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_a7cea8a44cce4b47a3b2c4b9a26d8e20.setIcon(icon_0941086f5f8c497fa144366feff03a88);
+        
+    
+        var popup_b3d8f579041c430889d423122706b1c5 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_52b07e7129654c918f70bd37d3b4d0e1 = $(`<div id="html_52b07e7129654c918f70bd37d3b4d0e1" style="width: 100.0%; height: 100.0%;"><h5> УИК № 998</h5><br><b> Амосов Михаил Иванович </b>: 14.93% <br><b> Беглов Александр Дмитриевич </b>: 58.85% <br><b> Тихонова Надежда Геннадьевна </b>: 23.45% <br><b> Явка </b>: 25.03 %<br><b> Количество проголосовавших</b>: 469 </div>`)[0];
+            popup_b3d8f579041c430889d423122706b1c5.setContent(html_52b07e7129654c918f70bd37d3b4d0e1);
+        
+
+        marker_a7cea8a44cce4b47a3b2c4b9a26d8e20.bindPopup(popup_b3d8f579041c430889d423122706b1c5)
+        ;
+
+        
+    
+    
+            var marker_7483f735a74241afbe15efc68a11da1a = L.marker(
+                [59.94815383553152, 30.48439533355609],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_417bb860f5d0456eaec68046beb0b95a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_7483f735a74241afbe15efc68a11da1a.setIcon(icon_417bb860f5d0456eaec68046beb0b95a);
+        
+    
+        var popup_b77259ea8ce544aa8c0be915d47a9815 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_076a873ff1e440008db9fb57fdf73e8a = $(`<div id="html_076a873ff1e440008db9fb57fdf73e8a" style="width: 100.0%; height: 100.0%;"><h5> УИК № 999</h5><br><b> Амосов Михаил Иванович </b>: 15.22% <br><b> Беглов Александр Дмитриевич </b>: 59.88% <br><b> Тихонова Надежда Геннадьевна </b>: 22.92% <br><b> Явка </b>: 27.0 %<br><b> Количество проголосовавших</b>: 506 </div>`)[0];
+            popup_b77259ea8ce544aa8c0be915d47a9815.setContent(html_076a873ff1e440008db9fb57fdf73e8a);
+        
+
+        marker_7483f735a74241afbe15efc68a11da1a.bindPopup(popup_b77259ea8ce544aa8c0be915d47a9815)
+        ;
+
+        
+    
+    
+            var marker_c84561d13b854e4fb48f11bc7651354b = L.marker(
+                [59.948063914389394, 30.485049393071467],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_7748126ee7cc4bf48999583e366175d7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_c84561d13b854e4fb48f11bc7651354b.setIcon(icon_7748126ee7cc4bf48999583e366175d7);
+        
+    
+        var popup_3720249c74e246f6867437373f86569c = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_826df6da6fe7430fb447f86c8d07201d = $(`<div id="html_826df6da6fe7430fb447f86c8d07201d" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1000</h5><br><b> Амосов Михаил Иванович </b>: 14.31% <br><b> Беглов Александр Дмитриевич </b>: 63.51% <br><b> Тихонова Надежда Геннадьевна </b>: 20.39% <br><b> Явка </b>: 29.83 %<br><b> Количество проголосовавших</b>: 559 </div>`)[0];
+            popup_3720249c74e246f6867437373f86569c.setContent(html_826df6da6fe7430fb447f86c8d07201d);
+        
+
+        marker_c84561d13b854e4fb48f11bc7651354b.bindPopup(popup_3720249c74e246f6867437373f86569c)
+        ;
+
+        
+    
+    
+            var marker_39ef76f126b54fdcaf727b9c1c938b4d = L.marker(
+                [59.94774219215544, 30.48481795662757],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_33d6525322ce460eb63a32a518ea9d1e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_39ef76f126b54fdcaf727b9c1c938b4d.setIcon(icon_33d6525322ce460eb63a32a518ea9d1e);
+        
+    
+        var popup_f38476b5fa74409bb193feb78eebbe77 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_a3689c1e63e04e52ae6ef2923292d09e = $(`<div id="html_a3689c1e63e04e52ae6ef2923292d09e" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1001</h5><br><b> Амосов Михаил Иванович </b>: 15.27% <br><b> Беглов Александр Дмитриевич </b>: 62.18% <br><b> Тихонова Надежда Геннадьевна </b>: 20.55% <br><b> Явка </b>: 29.35 %<br><b> Количество проголосовавших</b>: 550 </div>`)[0];
+            popup_f38476b5fa74409bb193feb78eebbe77.setContent(html_a3689c1e63e04e52ae6ef2923292d09e);
+        
+
+        marker_39ef76f126b54fdcaf727b9c1c938b4d.bindPopup(popup_f38476b5fa74409bb193feb78eebbe77)
+        ;
+
+        
+    
+    
+            var marker_ce2c6ec7d47c40acab51fe113f9308af = L.marker(
+                [59.942219994835945, 30.480022321094093],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_2fe66bd316da455388e274e5f728d899 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FA6039", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_ce2c6ec7d47c40acab51fe113f9308af.setIcon(icon_2fe66bd316da455388e274e5f728d899);
+        
+    
+        var popup_72416f5aff124b83afcff6458c8b397e = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_d9f600b847c34e8c9c16914ee029945c = $(`<div id="html_d9f600b847c34e8c9c16914ee029945c" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1002</h5><br><b> Амосов Михаил Иванович </b>: 12.40% <br><b> Беглов Александр Дмитриевич </b>: 69.21% <br><b> Тихонова Надежда Геннадьевна </b>: 16.49% <br><b> Явка </b>: 39.17 %<br><b> Количество проголосовавших</b>: 734 </div>`)[0];
+            popup_72416f5aff124b83afcff6458c8b397e.setContent(html_d9f600b847c34e8c9c16914ee029945c);
+        
+
+        marker_ce2c6ec7d47c40acab51fe113f9308af.bindPopup(popup_72416f5aff124b83afcff6458c8b397e)
+        ;
+
+        
+    
+    
+            var marker_a3c2294a575e4bdbb6b75e15abdaf4d4 = L.marker(
+                [59.943416177606785, 30.485576912274432],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_db3cc4d21c26432e87a9d7e86a0a8d12 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_a3c2294a575e4bdbb6b75e15abdaf4d4.setIcon(icon_db3cc4d21c26432e87a9d7e86a0a8d12);
+        
+    
+        var popup_9f843af016cd484cbe7d454d77afc030 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_fbd12d9ff5404224804970abefd0b82b = $(`<div id="html_fbd12d9ff5404224804970abefd0b82b" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1003</h5><br><b> Амосов Михаил Иванович </b>: 8.63% <br><b> Беглов Александр Дмитриевич </b>: 70.20% <br><b> Тихонова Надежда Геннадьевна </b>: 18.40% <br><b> Явка </b>: 32.76 %<br><b> Количество проголосовавших</b>: 614 </div>`)[0];
+            popup_9f843af016cd484cbe7d454d77afc030.setContent(html_fbd12d9ff5404224804970abefd0b82b);
+        
+
+        marker_a3c2294a575e4bdbb6b75e15abdaf4d4.bindPopup(popup_9f843af016cd484cbe7d454d77afc030)
+        ;
+
+        
+    
+    
+            var marker_6f72110252504e1dae1ca9faf45611d6 = L.marker(
+                [59.943129702922995, 30.485949223075504],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_13fe623264844b709ad164b4626e3460 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_6f72110252504e1dae1ca9faf45611d6.setIcon(icon_13fe623264844b709ad164b4626e3460);
+        
+    
+        var popup_9652f17c5a204bfea59567a177fadc13 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_d7e81a6fc7b141aeaacb915713f14051 = $(`<div id="html_d7e81a6fc7b141aeaacb915713f14051" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1004</h5><br><b> Амосов Михаил Иванович </b>: 12.59% <br><b> Беглов Александр Дмитриевич </b>: 66.17% <br><b> Тихонова Надежда Геннадьевна </b>: 18.23% <br><b> Явка </b>: 28.39 %<br><b> Количество проголосовавших</b>: 532 </div>`)[0];
+            popup_9652f17c5a204bfea59567a177fadc13.setContent(html_d7e81a6fc7b141aeaacb915713f14051);
+        
+
+        marker_6f72110252504e1dae1ca9faf45611d6.bindPopup(popup_9652f17c5a204bfea59567a177fadc13)
+        ;
+
+        
+    
+    
+            var marker_11a2d9171d3f40e8a8e9461c38f39dd1 = L.marker(
+                [59.94334721400864, 30.4864724706878],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_8168cb9825d747eeb1349eb88aab883e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_11a2d9171d3f40e8a8e9461c38f39dd1.setIcon(icon_8168cb9825d747eeb1349eb88aab883e);
+        
+    
+        var popup_84370816b3f44dc5b5e27eec68d1706d = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_4a85015ed8104346afe809e977d722ae = $(`<div id="html_4a85015ed8104346afe809e977d722ae" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1005</h5><br><b> Амосов Михаил Иванович </b>: 10.21% <br><b> Беглов Александр Дмитриевич </b>: 71.66% <br><b> Тихонова Надежда Геннадьевна </b>: 16.31% <br><b> Явка </b>: 32.39 %<br><b> Количество проголосовавших</b>: 607 </div>`)[0];
+            popup_84370816b3f44dc5b5e27eec68d1706d.setContent(html_4a85015ed8104346afe809e977d722ae);
+        
+
+        marker_11a2d9171d3f40e8a8e9461c38f39dd1.bindPopup(popup_84370816b3f44dc5b5e27eec68d1706d)
+        ;
+
+        
+    
+    
+            var marker_d718643f7df542e0a5caeea3a679bb3c = L.marker(
+                [59.939662, 30.47963900000002],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_50cbcf579a964fdbad4abc6aa2bdbe14 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_d718643f7df542e0a5caeea3a679bb3c.setIcon(icon_50cbcf579a964fdbad4abc6aa2bdbe14);
+        
+    
+        var popup_ecb212e9128d46b48c6bbf044bfbf5ea = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_9813e5c599b64e629a1bce048a99c596 = $(`<div id="html_9813e5c599b64e629a1bce048a99c596" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1006</h5><br><b> Амосов Михаил Иванович </b>: 14.91% <br><b> Беглов Александр Дмитриевич </b>: 64.02% <br><b> Тихонова Надежда Геннадьевна </b>: 18.29% <br><b> Явка </b>: 26.84 %<br><b> Количество проголосовавших</b>: 503 </div>`)[0];
+            popup_ecb212e9128d46b48c6bbf044bfbf5ea.setContent(html_9813e5c599b64e629a1bce048a99c596);
+        
+
+        marker_d718643f7df542e0a5caeea3a679bb3c.bindPopup(popup_ecb212e9128d46b48c6bbf044bfbf5ea)
+        ;
+
+        
+    
+    
+            var marker_cd495c6c62f74d7a9bf9c4cf89474f43 = L.marker(
+                [59.93982927898892, 30.47929706458261],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_9b189554f3154d7bbed36ca33f1b1a3e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFEF00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_cd495c6c62f74d7a9bf9c4cf89474f43.setIcon(icon_9b189554f3154d7bbed36ca33f1b1a3e);
+        
+    
+        var popup_99a49b6ae09b4f3484dd1f0ecd9b1732 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_2f554d337498446d9bbb02a69516ce8c = $(`<div id="html_2f554d337498446d9bbb02a69516ce8c" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1007</h5><br><b> Амосов Михаил Иванович </b>: 14.61% <br><b> Беглов Александр Дмитриевич </b>: 62.64% <br><b> Тихонова Надежда Геннадьевна </b>: 21.07% <br><b> Явка </b>: 19.0 %<br><b> Количество проголосовавших</b>: 356 </div>`)[0];
+            popup_99a49b6ae09b4f3484dd1f0ecd9b1732.setContent(html_2f554d337498446d9bbb02a69516ce8c);
+        
+
+        marker_cd495c6c62f74d7a9bf9c4cf89474f43.bindPopup(popup_99a49b6ae09b4f3484dd1f0ecd9b1732)
+        ;
+
+        
+    
+    
+            var marker_4a07b0d758404a77b45a9472c0d36e13 = L.marker(
+                [59.93975952139752, 30.480162435633723],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_5ba327a97fe74516b46b8cac0cd0020a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_4a07b0d758404a77b45a9472c0d36e13.setIcon(icon_5ba327a97fe74516b46b8cac0cd0020a);
+        
+    
+        var popup_ac4c1d5a93a3413eb7174dc66a8349fd = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_e8e31ac323444b1788e368e1d996c4aa = $(`<div id="html_e8e31ac323444b1788e368e1d996c4aa" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1008</h5><br><b> Амосов Михаил Иванович </b>: 14.89% <br><b> Беглов Александр Дмитриевич </b>: 62.68% <br><b> Тихонова Надежда Геннадьевна </b>: 20.59% <br><b> Явка </b>: 29.03 %<br><b> Количество проголосовавших</b>: 544 </div>`)[0];
+            popup_ac4c1d5a93a3413eb7174dc66a8349fd.setContent(html_e8e31ac323444b1788e368e1d996c4aa);
+        
+
+        marker_4a07b0d758404a77b45a9472c0d36e13.bindPopup(popup_ac4c1d5a93a3413eb7174dc66a8349fd)
+        ;
+
+        
+    
+    
+            var marker_c4097805b7cb49fe8cdceea1de818dbd = L.marker(
+                [59.9373307907128, 30.485485750507106],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_1e345161f01342b3b3ae606f9b51e0f7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_c4097805b7cb49fe8cdceea1de818dbd.setIcon(icon_1e345161f01342b3b3ae606f9b51e0f7);
+        
+    
+        var popup_cf7813a212584b1bbeca90413f758d6a = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_e366b13991a444d3bb5b806591083a2b = $(`<div id="html_e366b13991a444d3bb5b806591083a2b" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1009</h5><br><b> Амосов Михаил Иванович </b>: 18.10% <br><b> Беглов Александр Дмитриевич </b>: 60.69% <br><b> Тихонова Надежда Геннадьевна </b>: 16.82% <br><b> Явка </b>: 29.19 %<br><b> Количество проголосовавших</b>: 547 </div>`)[0];
+            popup_cf7813a212584b1bbeca90413f758d6a.setContent(html_e366b13991a444d3bb5b806591083a2b);
+        
+
+        marker_c4097805b7cb49fe8cdceea1de818dbd.bindPopup(popup_cf7813a212584b1bbeca90413f758d6a)
+        ;
+
+        
+    
+    
+            var marker_82b5bba2142f465eb26aa7dd211b2ad3 = L.marker(
+                [59.93728623917607, 30.48615993493064],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_7c03b18b390545eca4bdd7c4614c2348 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_82b5bba2142f465eb26aa7dd211b2ad3.setIcon(icon_7c03b18b390545eca4bdd7c4614c2348);
+        
+    
+        var popup_b82b32d94b764e349ce7b95e41991f54 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_6384649fb0f248e0b354d6ce2b591bd4 = $(`<div id="html_6384649fb0f248e0b354d6ce2b591bd4" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1010</h5><br><b> Амосов Михаил Иванович </b>: 17.11% <br><b> Беглов Александр Дмитриевич </b>: 57.32% <br><b> Тихонова Надежда Геннадьевна </b>: 23.99% <br><b> Явка </b>: 30.26 %<br><b> Количество проголосовавших</b>: 567 </div>`)[0];
+            popup_b82b32d94b764e349ce7b95e41991f54.setContent(html_6384649fb0f248e0b354d6ce2b591bd4);
+        
+
+        marker_82b5bba2142f465eb26aa7dd211b2ad3.bindPopup(popup_b82b32d94b764e349ce7b95e41991f54)
+        ;
+
+        
+    
+    
+            var marker_bbb58021f9154d58bf0ebb5a766ee620 = L.marker(
+                [59.93738, 30.48579910000001],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_7405351618c94b209afbdc1fc45044df = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFEF00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_bbb58021f9154d58bf0ebb5a766ee620.setIcon(icon_7405351618c94b209afbdc1fc45044df);
+        
+    
+        var popup_5fdb8aec9450464caf1bf176aa030e7a = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_c3ff3d9fe67a47ce9f985fe7aaace110 = $(`<div id="html_c3ff3d9fe67a47ce9f985fe7aaace110" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1011</h5><br><b> Амосов Михаил Иванович </b>: 13.76% <br><b> Беглов Александр Дмитриевич </b>: 66.67% <br><b> Тихонова Надежда Геннадьевна </b>: 18.96% <br><b> Явка </b>: 17.45 %<br><b> Количество проголосовавших</b>: 327 </div>`)[0];
+            popup_5fdb8aec9450464caf1bf176aa030e7a.setContent(html_c3ff3d9fe67a47ce9f985fe7aaace110);
+        
+
+        marker_bbb58021f9154d58bf0ebb5a766ee620.bindPopup(popup_5fdb8aec9450464caf1bf176aa030e7a)
+        ;
+
+        
+    
+    
+            var marker_88f74f6e3e6e4c5892e5b3c4d3f3001a = L.marker(
+                [59.941647524415195, 30.492136809928525],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_d295e0cd8bf44a3fa54bd52218f29fd7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFEF00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_88f74f6e3e6e4c5892e5b3c4d3f3001a.setIcon(icon_d295e0cd8bf44a3fa54bd52218f29fd7);
+        
+    
+        var popup_262807b6bebe4df8a24ee005514a8403 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_511f40480cc64fa297f26ba24f0eb925 = $(`<div id="html_511f40480cc64fa297f26ba24f0eb925" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1012</h5><br><b> Амосов Михаил Иванович </b>: 14.97% <br><b> Беглов Александр Дмитриевич </b>: 61.30% <br><b> Тихонова Надежда Геннадьевна </b>: 21.75% <br><b> Явка </b>: 18.89 %<br><b> Количество проголосовавших</b>: 354 </div>`)[0];
+            popup_262807b6bebe4df8a24ee005514a8403.setContent(html_511f40480cc64fa297f26ba24f0eb925);
+        
+
+        marker_88f74f6e3e6e4c5892e5b3c4d3f3001a.bindPopup(popup_262807b6bebe4df8a24ee005514a8403)
+        ;
+
+        
+    
+    
+            var marker_ba72c9e6247b4db0ae2806f99c6f1182 = L.marker(
+                [59.94157776519595, 30.492921681346978],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_1e9fceda764142c8959b2328ddbebc17 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_ba72c9e6247b4db0ae2806f99c6f1182.setIcon(icon_1e9fceda764142c8959b2328ddbebc17);
+        
+    
+        var popup_9be8438547ee4c5683b0939872e97e5d = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_dc3c4d7a86774d3890281a605ca0b54d = $(`<div id="html_dc3c4d7a86774d3890281a605ca0b54d" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1013</h5><br><b> Амосов Михаил Иванович </b>: 9.52% <br><b> Беглов Александр Дмитриевич </b>: 70.02% <br><b> Тихонова Надежда Геннадьевна </b>: 17.28% <br><b> Явка </b>: 30.26 %<br><b> Количество проголосовавших</b>: 567 </div>`)[0];
+            popup_9be8438547ee4c5683b0939872e97e5d.setContent(html_dc3c4d7a86774d3890281a605ca0b54d);
+        
+
+        marker_ba72c9e6247b4db0ae2806f99c6f1182.bindPopup(popup_9be8438547ee4c5683b0939872e97e5d)
+        ;
+
+        
+    
+    
+            var marker_4eb265c4ef2f45128ee3f96243f5f59f = L.marker(
+                [59.94167, 30.492614000000003],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_b31e20f9bdef4bfbb1062918510f0f6d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_4eb265c4ef2f45128ee3f96243f5f59f.setIcon(icon_b31e20f9bdef4bfbb1062918510f0f6d);
+        
+    
+        var popup_db41ce5b6931484a8e642bbea41da2e0 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_d3049777affa451bbec4bc98c4229586 = $(`<div id="html_d3049777affa451bbec4bc98c4229586" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1014</h5><br><b> Амосов Михаил Иванович </b>: 12.12% <br><b> Беглов Александр Дмитриевич </b>: 65.46% <br><b> Тихонова Надежда Геннадьевна </b>: 18.99% <br><b> Явка </b>: 29.51 %<br><b> Количество проголосовавших</b>: 553 </div>`)[0];
+            popup_db41ce5b6931484a8e642bbea41da2e0.setContent(html_d3049777affa451bbec4bc98c4229586);
+        
+
+        marker_4eb265c4ef2f45128ee3f96243f5f59f.bindPopup(popup_db41ce5b6931484a8e642bbea41da2e0)
+        ;
+
+        
+    
+    
+            var marker_f5ba12d22d334b32b64e6ee5076a18ea = L.marker(
+                [59.943718734069876, 30.500044590270406],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_e18acf884fa7444ba696c8549f8cd689 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_f5ba12d22d334b32b64e6ee5076a18ea.setIcon(icon_e18acf884fa7444ba696c8549f8cd689);
+        
+    
+        var popup_80aa5075c57a41ddab31332ae91ed361 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_ebdee7a17d3747359e353f68345cb772 = $(`<div id="html_ebdee7a17d3747359e353f68345cb772" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1015</h5><br><b> Амосов Михаил Иванович </b>: 11.31% <br><b> Беглов Александр Дмитриевич </b>: 66.97% <br><b> Тихонова Надежда Геннадьевна </b>: 18.78% <br><b> Явка </b>: 23.59 %<br><b> Количество проголосовавших</b>: 442 </div>`)[0];
+            popup_80aa5075c57a41ddab31332ae91ed361.setContent(html_ebdee7a17d3747359e353f68345cb772);
+        
+
+        marker_f5ba12d22d334b32b64e6ee5076a18ea.bindPopup(popup_80aa5075c57a41ddab31332ae91ed361)
+        ;
+
+        
+    
+    
+            var marker_68cf5b24b6dd4006bfe695fbf5654a3f = L.marker(
+                [59.94351975423459, 30.499973902883266],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_e6c6c37536374b17b4a64e5627837145 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_68cf5b24b6dd4006bfe695fbf5654a3f.setIcon(icon_e6c6c37536374b17b4a64e5627837145);
+        
+    
+        var popup_610e872ee443400ebcc0f6cf3ee1126d = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_8ea48e52e10d4af0b5892c9001d8dba8 = $(`<div id="html_8ea48e52e10d4af0b5892c9001d8dba8" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1016</h5><br><b> Амосов Михаил Иванович </b>: 12.48% <br><b> Беглов Александр Дмитриевич </b>: 69.29% <br><b> Тихонова Надежда Геннадьевна </b>: 16.31% <br><b> Явка </b>: 27.8 %<br><b> Количество проголосовавших</b>: 521 </div>`)[0];
+            popup_610e872ee443400ebcc0f6cf3ee1126d.setContent(html_8ea48e52e10d4af0b5892c9001d8dba8);
+        
+
+        marker_68cf5b24b6dd4006bfe695fbf5654a3f.bindPopup(popup_610e872ee443400ebcc0f6cf3ee1126d)
+        ;
+
+        
+    
+    
+            var marker_aded55f75775465da86e8a58268b9650 = L.marker(
+                [59.94332218185547, 30.499903715913252],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_a66cf12177de4766bcf3fa32670dd7a0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_aded55f75775465da86e8a58268b9650.setIcon(icon_a66cf12177de4766bcf3fa32670dd7a0);
+        
+    
+        var popup_b2acf115bb2842b8afcfe87ef27fb9bc = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_3963a269a9fc4ccea94b0f688c7f0f0d = $(`<div id="html_3963a269a9fc4ccea94b0f688c7f0f0d" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1017</h5><br><b> Амосов Михаил Иванович </b>: 14.43% <br><b> Беглов Александр Дмитриевич </b>: 63.33% <br><b> Тихонова Надежда Геннадьевна </b>: 18.24% <br><b> Явка </b>: 26.63 %<br><b> Количество проголосовавших</b>: 499 </div>`)[0];
+            popup_b2acf115bb2842b8afcfe87ef27fb9bc.setContent(html_3963a269a9fc4ccea94b0f688c7f0f0d);
+        
+
+        marker_aded55f75775465da86e8a58268b9650.bindPopup(popup_b2acf115bb2842b8afcfe87ef27fb9bc)
+        ;
+
+        
+    
+    
+            var marker_c2c33bd1a62e46aaaf70df9f370f2730 = L.marker(
+                [59.943465, 30.50003300000003],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_3deb57f1e76d4998a4e9cd440f541eec = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_c2c33bd1a62e46aaaf70df9f370f2730.setIcon(icon_3deb57f1e76d4998a4e9cd440f541eec);
+        
+    
+        var popup_00be85deae7546be98537d9ef68b2ea6 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_123e97e8c3b945d79d63035b63c3aa0c = $(`<div id="html_123e97e8c3b945d79d63035b63c3aa0c" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1018</h5><br><b> Амосов Михаил Иванович </b>: 13.18% <br><b> Беглов Александр Дмитриевич </b>: 65.76% <br><b> Тихонова Надежда Геннадьевна </b>: 18.65% <br><b> Явка </b>: 33.19 %<br><b> Количество проголосовавших</b>: 622 </div>`)[0];
+            popup_00be85deae7546be98537d9ef68b2ea6.setContent(html_123e97e8c3b945d79d63035b63c3aa0c);
+        
+
+        marker_c2c33bd1a62e46aaaf70df9f370f2730.bindPopup(popup_00be85deae7546be98537d9ef68b2ea6)
+        ;
+
+        
+    
+    
+            var marker_388b4862988043498274bdba44925e8b = L.marker(
+                [59.93711800000001, 30.492440999999985],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_e371781348004fc6905833547e4b00a0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_388b4862988043498274bdba44925e8b.setIcon(icon_e371781348004fc6905833547e4b00a0);
+        
+    
+        var popup_5f4906669b1344d4bf5d8028017ac688 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_bd0100fe36f446a5b1b8b1062ee3bb8f = $(`<div id="html_bd0100fe36f446a5b1b8b1062ee3bb8f" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1019</h5><br><b> Амосов Михаил Иванович </b>: 13.37% <br><b> Беглов Александр Дмитриевич </b>: 68.26% <br><b> Тихонова Надежда Геннадьевна </b>: 16.37% <br><b> Явка </b>: 26.73 %<br><b> Количество проголосовавших</b>: 501 </div>`)[0];
+            popup_5f4906669b1344d4bf5d8028017ac688.setContent(html_bd0100fe36f446a5b1b8b1062ee3bb8f);
+        
+
+        marker_388b4862988043498274bdba44925e8b.bindPopup(popup_5f4906669b1344d4bf5d8028017ac688)
+        ;
+
+        
+    
+    
+            var marker_e4b48eda3a1c4b02932d0dfdba493dbf = L.marker(
+                [59.93718065340293, 30.492415525908164],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_71af6b406f684a2293d716b301b16ca5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_e4b48eda3a1c4b02932d0dfdba493dbf.setIcon(icon_71af6b406f684a2293d716b301b16ca5);
+        
+    
+        var popup_c81f622c2e2748ea85f743c4e4a47c0f = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_d63a72d5b5ee4d9a9814e77b4bcdfc23 = $(`<div id="html_d63a72d5b5ee4d9a9814e77b4bcdfc23" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1020</h5><br><b> Амосов Михаил Иванович </b>: 13.35% <br><b> Беглов Александр Дмитриевич </b>: 66.01% <br><b> Тихонова Надежда Геннадьевна </b>: 18.66% <br><b> Явка </b>: 35.17 %<br><b> Количество проголосовавших</b>: 659 </div>`)[0];
+            popup_c81f622c2e2748ea85f743c4e4a47c0f.setContent(html_d63a72d5b5ee4d9a9814e77b4bcdfc23);
+        
+
+        marker_e4b48eda3a1c4b02932d0dfdba493dbf.bindPopup(popup_c81f622c2e2748ea85f743c4e4a47c0f)
+        ;
+
+        
+    
+    
+            var marker_7a7c70e388a04ae2a3dee9c50876c60f = L.marker(
+                [59.93844535311599, 30.498700239608173],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_b352bd115ce447fc9a217df6efd8b78b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_7a7c70e388a04ae2a3dee9c50876c60f.setIcon(icon_b352bd115ce447fc9a217df6efd8b78b);
+        
+    
+        var popup_8c56e8bc1025459fbf1693032ef46221 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_e0e27a597eee4636ae2a19c4889a97a3 = $(`<div id="html_e0e27a597eee4636ae2a19c4889a97a3" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1021</h5><br><b> Амосов Михаил Иванович </b>: 13.67% <br><b> Беглов Александр Дмитриевич </b>: 60.13% <br><b> Тихонова Надежда Геннадьевна </b>: 22.99% <br><b> Явка </b>: 33.19 %<br><b> Количество проголосовавших</b>: 622 </div>`)[0];
+            popup_8c56e8bc1025459fbf1693032ef46221.setContent(html_e0e27a597eee4636ae2a19c4889a97a3);
+        
+
+        marker_7a7c70e388a04ae2a3dee9c50876c60f.bindPopup(popup_8c56e8bc1025459fbf1693032ef46221)
+        ;
+
+        
+    
+    
+            var marker_b7429b5b748e4f138043aa145b15ce86 = L.marker(
+                [59.93686389905371, 30.49232496382142],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_43605c4376a14b77933f77e3405e394f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_b7429b5b748e4f138043aa145b15ce86.setIcon(icon_43605c4376a14b77933f77e3405e394f);
+        
+    
+        var popup_bfb4624effbc46aaaace9811f50dbff1 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_ba4862097bd944fd89042c636f88826f = $(`<div id="html_ba4862097bd944fd89042c636f88826f" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1022</h5><br><b> Амосов Михаил Иванович </b>: 13.04% <br><b> Беглов Александр Дмитриевич </b>: 66.61% <br><b> Тихонова Надежда Геннадьевна </b>: 17.01% <br><b> Явка </b>: 33.56 %<br><b> Количество проголосовавших</b>: 629 </div>`)[0];
+            popup_bfb4624effbc46aaaace9811f50dbff1.setContent(html_ba4862097bd944fd89042c636f88826f);
+        
+
+        marker_b7429b5b748e4f138043aa145b15ce86.bindPopup(popup_bfb4624effbc46aaaace9811f50dbff1)
+        ;
+
+        
+    
+    
+            var marker_8027570698b7402d9a1152ed30378c49 = L.marker(
+                [59.938017713058464, 30.498579490159177],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_ddc200fa51054dd58f718450a39356de = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_8027570698b7402d9a1152ed30378c49.setIcon(icon_ddc200fa51054dd58f718450a39356de);
+        
+    
+        var popup_f473d58636954c138b87a34162013754 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_ed06d88790a549e28ccca43ae3a5306d = $(`<div id="html_ed06d88790a549e28ccca43ae3a5306d" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1023</h5><br><b> Амосов Михаил Иванович </b>: 14.89% <br><b> Беглов Александр Дмитриевич </b>: 62.87% <br><b> Тихонова Надежда Геннадьевна </b>: 19.09% <br><b> Явка </b>: 30.47 %<br><b> Количество проголосовавших</b>: 571 </div>`)[0];
+            popup_f473d58636954c138b87a34162013754.setContent(html_ed06d88790a549e28ccca43ae3a5306d);
+        
+
+        marker_8027570698b7402d9a1152ed30378c49.bindPopup(popup_f473d58636954c138b87a34162013754)
+        ;
+
+        
+    
+    
+            var marker_ce35a464107c4e49adb429505b20cf83 = L.marker(
+                [59.93826399999999, 30.499204899999995],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_eba936b2ca144d0da22ec6aa0b4dd53e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_ce35a464107c4e49adb429505b20cf83.setIcon(icon_eba936b2ca144d0da22ec6aa0b4dd53e);
+        
+    
+        var popup_108ef30fc3c044d58a36a9dd427f9346 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_e46650c4879f488688a6356af66a045d = $(`<div id="html_e46650c4879f488688a6356af66a045d" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1023</h5><br><b> Амосов Михаил Иванович </b>: 11.13% <br><b> Беглов Александр Дмитриевич </b>: 63.45% <br><b> Тихонова Надежда Геннадьевна </b>: 22.08% <br><b> Явка </b>: 28.76 %<br><b> Количество проголосовавших</b>: 539 </div>`)[0];
+            popup_108ef30fc3c044d58a36a9dd427f9346.setContent(html_e46650c4879f488688a6356af66a045d);
+        
+
+        marker_ce35a464107c4e49adb429505b20cf83.bindPopup(popup_108ef30fc3c044d58a36a9dd427f9346)
+        ;
+
+        
+    
+    
+            var marker_63864d40dda540c8b6ea57440bd53580 = L.marker(
+                [59.94678129924613, 30.494515799382615],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_8b07e25d24e24f889457c210fdb618e3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_63864d40dda540c8b6ea57440bd53580.setIcon(icon_8b07e25d24e24f889457c210fdb618e3);
+        
+    
+        var popup_c5f8f67e9e294c208d24f229d1207fff = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_cf5e24b7691e483f9082911fd45f5318 = $(`<div id="html_cf5e24b7691e483f9082911fd45f5318" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1024</h5><br><b> Амосов Михаил Иванович </b>: 13.12% <br><b> Беглов Александр Дмитриевич </b>: 68.99% <br><b> Тихонова Надежда Геннадьевна </b>: 15.90% <br><b> Явка </b>: 26.84 %<br><b> Количество проголосовавших</b>: 503 </div>`)[0];
+            popup_c5f8f67e9e294c208d24f229d1207fff.setContent(html_cf5e24b7691e483f9082911fd45f5318);
+        
+
+        marker_63864d40dda540c8b6ea57440bd53580.bindPopup(popup_c5f8f67e9e294c208d24f229d1207fff)
+        ;
+
+        
+    
+    
+            var marker_0c424bacd93f4b4f85b9917c0c0f2ea1 = L.marker(
+                [59.94678971720839, 30.494937011243266],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_7daf43bafc224313ae60a4e93d420732 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_0c424bacd93f4b4f85b9917c0c0f2ea1.setIcon(icon_7daf43bafc224313ae60a4e93d420732);
+        
+    
+        var popup_0712b0278df54cafb766d5e10f805539 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_5b1cb3d6ff194f11b0f054a37534b3df = $(`<div id="html_5b1cb3d6ff194f11b0f054a37534b3df" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1025</h5><br><b> Амосов Михаил Иванович </b>: 13.82% <br><b> Беглов Александр Дмитриевич </b>: 64.91% <br><b> Тихонова Надежда Геннадьевна </b>: 17.70% <br><b> Явка </b>: 34.36 %<br><b> Количество проголосовавших</b>: 644 </div>`)[0];
+            popup_0712b0278df54cafb766d5e10f805539.setContent(html_5b1cb3d6ff194f11b0f054a37534b3df);
+        
+
+        marker_0c424bacd93f4b4f85b9917c0c0f2ea1.bindPopup(popup_0712b0278df54cafb766d5e10f805539)
+        ;
+
+        
+    
+    
+            var marker_47696d0142904a36a083597ebbfbd0b3 = L.marker(
+                [59.946797990475794, 30.49535098307148],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_d3cdaf44dc864e09b168935604eda0b4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_47696d0142904a36a083597ebbfbd0b3.setIcon(icon_d3cdaf44dc864e09b168935604eda0b4);
+        
+    
+        var popup_7481fc8590304ae283b003a3c1819a6c = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_4568c64bc95a4273a05813ef2074efe0 = $(`<div id="html_4568c64bc95a4273a05813ef2074efe0" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1026</h5><br><b> Амосов Михаил Иванович </b>: 21.07% <br><b> Беглов Александр Дмитриевич </b>: 58.21% <br><b> Тихонова Надежда Геннадьевна </b>: 16.61% <br><b> Явка </b>: 29.88 %<br><b> Количество проголосовавших</b>: 560 </div>`)[0];
+            popup_7481fc8590304ae283b003a3c1819a6c.setContent(html_4568c64bc95a4273a05813ef2074efe0);
+        
+
+        marker_47696d0142904a36a083597ebbfbd0b3.bindPopup(popup_7481fc8590304ae283b003a3c1819a6c)
+        ;
+
+        
+    
+    
+            var marker_c7586da28a3e425e914ba71702bab594 = L.marker(
+                [59.948458, 30.49785799999995],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_af7c45ed84204297be21285b01a49bbf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_c7586da28a3e425e914ba71702bab594.setIcon(icon_af7c45ed84204297be21285b01a49bbf);
+        
+    
+        var popup_0961abf9536945b19dcb43760e458294 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_46f7a58f140c4775b8f3e95ef9413bd7 = $(`<div id="html_46f7a58f140c4775b8f3e95ef9413bd7" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1027</h5><br><b> Амосов Михаил Иванович </b>: 11.33% <br><b> Беглов Александр Дмитриевич </b>: 69.93% <br><b> Тихонова Надежда Геннадьевна </b>: 15.69% <br><b> Явка </b>: 24.49 %<br><b> Количество проголосовавших</b>: 459 </div>`)[0];
+            popup_0961abf9536945b19dcb43760e458294.setContent(html_46f7a58f140c4775b8f3e95ef9413bd7);
+        
+
+        marker_c7586da28a3e425e914ba71702bab594.bindPopup(popup_0961abf9536945b19dcb43760e458294)
+        ;
+
+        
+    
+    
+            var marker_dba5e67c0f7c49f0bbb11357996e78f5 = L.marker(
+                [59.94880318024404, 30.49793748249289],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_32e2ec3e28644ddf9dacb0867b90ad9f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_dba5e67c0f7c49f0bbb11357996e78f5.setIcon(icon_32e2ec3e28644ddf9dacb0867b90ad9f);
+        
+    
+        var popup_f50ee3ca6ccf45a184eed889ca5d2787 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_10ba7fbbc1aa48cd920561f5deb1b308 = $(`<div id="html_10ba7fbbc1aa48cd920561f5deb1b308" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1028</h5><br><b> Амосов Михаил Иванович </b>: 18.70% <br><b> Беглов Александр Дмитриевич </b>: 64.09% <br><b> Тихонова Надежда Геннадьевна </b>: 15.21% <br><b> Явка </b>: 21.4 %<br><b> Количество проголосовавших</b>: 401 </div>`)[0];
+            popup_f50ee3ca6ccf45a184eed889ca5d2787.setContent(html_10ba7fbbc1aa48cd920561f5deb1b308);
+        
+
+        marker_dba5e67c0f7c49f0bbb11357996e78f5.bindPopup(popup_f50ee3ca6ccf45a184eed889ca5d2787)
+        ;
+
+        
+    
+    
+            var marker_55c6ef9e806947eaaca04bb0d3659103 = L.marker(
+                [59.948458, 30.49785799999995],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_e8963853c4a343d5925a94c53a223d59 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_55c6ef9e806947eaaca04bb0d3659103.setIcon(icon_e8963853c4a343d5925a94c53a223d59);
+        
+    
+        var popup_63f54f3714324c5da4851ecce9c0a0d1 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_e9f4c70d9ea0475590c6446c622f66c2 = $(`<div id="html_e9f4c70d9ea0475590c6446c622f66c2" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1029</h5><br><b> Амосов Михаил Иванович </b>: 15.38% <br><b> Беглов Александр Дмитриевич </b>: 64.44% <br><b> Тихонова Надежда Геннадьевна </b>: 16.58% <br><b> Явка </b>: 31.22 %<br><b> Количество проголосовавших</b>: 585 </div>`)[0];
+            popup_63f54f3714324c5da4851ecce9c0a0d1.setContent(html_e9f4c70d9ea0475590c6446c622f66c2);
+        
+
+        marker_55c6ef9e806947eaaca04bb0d3659103.bindPopup(popup_63f54f3714324c5da4851ecce9c0a0d1)
+        ;
+
+        
+    
+    
+            var marker_9a1d0879891c42299382218b74fa7d02 = L.marker(
+                [59.9507793294539, 30.49170456299894],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_8afb227e90ae4ac1ab6eb575bfc82751 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_9a1d0879891c42299382218b74fa7d02.setIcon(icon_8afb227e90ae4ac1ab6eb575bfc82751);
+        
+    
+        var popup_9627253833be49e7b1e584a190ed139e = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_dee3f2abe3804968883d7af3f340b654 = $(`<div id="html_dee3f2abe3804968883d7af3f340b654" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1030</h5><br><b> Амосов Михаил Иванович </b>: 14.32% <br><b> Беглов Александр Дмитриевич </b>: 61.14% <br><b> Тихонова Надежда Геннадьевна </b>: 21.14% <br><b> Явка </b>: 23.48 %<br><b> Количество проголосовавших</b>: 440 </div>`)[0];
+            popup_9627253833be49e7b1e584a190ed139e.setContent(html_dee3f2abe3804968883d7af3f340b654);
+        
+
+        marker_9a1d0879891c42299382218b74fa7d02.bindPopup(popup_9627253833be49e7b1e584a190ed139e)
+        ;
+
+        
+    
+    
+            var marker_043e8fa0ad6e485d82e446189956d0ed = L.marker(
+                [59.95068537952861, 30.49208286569214],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_e2cb7aad0f9a45b39ba94ffd62f4acf4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_043e8fa0ad6e485d82e446189956d0ed.setIcon(icon_e2cb7aad0f9a45b39ba94ffd62f4acf4);
+        
+    
+        var popup_d2089a0fbcef4bd58c00a8262723d452 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_1e2553c35e5e495fb16c0bcfe5efe6d9 = $(`<div id="html_1e2553c35e5e495fb16c0bcfe5efe6d9" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1031</h5><br><b> Амосов Михаил Иванович </b>: 13.76% <br><b> Беглов Александр Дмитриевич </b>: 64.68% <br><b> Тихонова Надежда Геннадьевна </b>: 19.11% <br><b> Явка </b>: 34.9 %<br><b> Количество проголосовавших</b>: 654 </div>`)[0];
+            popup_d2089a0fbcef4bd58c00a8262723d452.setContent(html_1e2553c35e5e495fb16c0bcfe5efe6d9);
+        
+
+        marker_043e8fa0ad6e485d82e446189956d0ed.bindPopup(popup_d2089a0fbcef4bd58c00a8262723d452)
+        ;
+
+        
+    
+    
+            var marker_d64a27be5fb3441e9b8c06ede5ae1deb = L.marker(
+                [59.950589407513554, 30.492469309509218],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_1faf1983f8394a7280621d80918de442 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_d64a27be5fb3441e9b8c06ede5ae1deb.setIcon(icon_1faf1983f8394a7280621d80918de442);
+        
+    
+        var popup_faa6622b955d44569d7a89250adad2b9 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_0d6918cb2e5b4b8397252d401b800039 = $(`<div id="html_0d6918cb2e5b4b8397252d401b800039" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1032</h5><br><b> Амосов Михаил Иванович </b>: 18.40% <br><b> Беглов Александр Дмитриевич </b>: 62.58% <br><b> Тихонова Надежда Геннадьевна </b>: 16.10% <br><b> Явка </b>: 34.79 %<br><b> Количество проголосовавших</b>: 652 </div>`)[0];
+            popup_faa6622b955d44569d7a89250adad2b9.setContent(html_0d6918cb2e5b4b8397252d401b800039);
+        
+
+        marker_d64a27be5fb3441e9b8c06ede5ae1deb.bindPopup(popup_faa6622b955d44569d7a89250adad2b9)
+        ;
+
+        
+    
+    
+            var marker_a2de72fd54d348bb82a718494fbca75b = L.marker(
+                [59.95380236930243, 30.488827316032726],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_6e1a34b7fe3e4d6f9bfa2b653c8799b5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_a2de72fd54d348bb82a718494fbca75b.setIcon(icon_6e1a34b7fe3e4d6f9bfa2b653c8799b5);
+        
+    
+        var popup_9dd39efa1d4b4578bc0037b5f53df4e3 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_89ab650c6f1748eab6e199007925f84a = $(`<div id="html_89ab650c6f1748eab6e199007925f84a" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1033</h5><br><b> Амосов Михаил Иванович </b>: 14.11% <br><b> Беглов Александр Дмитриевич </b>: 66.14% <br><b> Тихонова Надежда Геннадьевна </b>: 16.77% <br><b> Явка </b>: 34.04 %<br><b> Количество проголосовавших</b>: 638 </div>`)[0];
+            popup_9dd39efa1d4b4578bc0037b5f53df4e3.setContent(html_89ab650c6f1748eab6e199007925f84a);
+        
+
+        marker_a2de72fd54d348bb82a718494fbca75b.bindPopup(popup_9dd39efa1d4b4578bc0037b5f53df4e3)
+        ;
+
+        
+    
+    
+            var marker_48f56fa5d6a8437f8a514e646be9b2b7 = L.marker(
+                [59.954005114670885, 30.489621778245453],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_1f085650d1f948c29bd3d748b3142f59 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_48f56fa5d6a8437f8a514e646be9b2b7.setIcon(icon_1f085650d1f948c29bd3d748b3142f59);
+        
+    
+        var popup_033e1413e1ed46d995c088567268ad41 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_370c361d28b643f4ae5a75f553b3733d = $(`<div id="html_370c361d28b643f4ae5a75f553b3733d" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1034</h5><br><b> Амосов Михаил Иванович </b>: 13.78% <br><b> Беглов Александр Дмитриевич </b>: 64.67% <br><b> Тихонова Надежда Геннадьевна </b>: 18.80% <br><b> Явка </b>: 32.92 %<br><b> Количество проголосовавших</b>: 617 </div>`)[0];
+            popup_033e1413e1ed46d995c088567268ad41.setContent(html_370c361d28b643f4ae5a75f553b3733d);
+        
+
+        marker_48f56fa5d6a8437f8a514e646be9b2b7.bindPopup(popup_033e1413e1ed46d995c088567268ad41)
+        ;
+
+        
+    
+    
+            var marker_35829b9b28e041b2abcb3d1f795d45db = L.marker(
+                [59.95410242761303, 30.491883658282617],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_5d5730100c8a45deb82bdcac5d5cba1e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_35829b9b28e041b2abcb3d1f795d45db.setIcon(icon_5d5730100c8a45deb82bdcac5d5cba1e);
+        
+    
+        var popup_37c1603c241847cb8bfd238170dcc692 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_de8c71e9b38d41e5b397f5d7685712d1 = $(`<div id="html_de8c71e9b38d41e5b397f5d7685712d1" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1035</h5><br><b> Амосов Михаил Иванович </b>: 12.03% <br><b> Беглов Александр Дмитриевич </b>: 64.66% <br><b> Тихонова Надежда Геннадьевна </b>: 19.17% <br><b> Явка </b>: 28.39 %<br><b> Количество проголосовавших</b>: 532 </div>`)[0];
+            popup_37c1603c241847cb8bfd238170dcc692.setContent(html_de8c71e9b38d41e5b397f5d7685712d1);
+        
+
+        marker_35829b9b28e041b2abcb3d1f795d45db.bindPopup(popup_37c1603c241847cb8bfd238170dcc692)
+        ;
+
+        
+    
+    
+            var marker_11899f3bdbad4fca95595b0b9fe450d2 = L.marker(
+                [59.954324, 30.49273889999995],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_d17949ab79c044a1bce82e6764cdc1fb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFEF00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_11899f3bdbad4fca95595b0b9fe450d2.setIcon(icon_d17949ab79c044a1bce82e6764cdc1fb);
+        
+    
+        var popup_23bafcc39b954cc2925dc142a3725a2e = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_0b4c7bd0dce245b897ab2fc9a76d48b4 = $(`<div id="html_0b4c7bd0dce245b897ab2fc9a76d48b4" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1036</h5><br><b> Амосов Михаил Иванович </b>: 14.80% <br><b> Беглов Александр Дмитриевич </b>: 60.34% <br><b> Тихонова Надежда Геннадьевна </b>: 20.39% <br><b> Явка </b>: 19.1 %<br><b> Количество проголосовавших</b>: 358 </div>`)[0];
+            popup_23bafcc39b954cc2925dc142a3725a2e.setContent(html_0b4c7bd0dce245b897ab2fc9a76d48b4);
+        
+
+        marker_11899f3bdbad4fca95595b0b9fe450d2.bindPopup(popup_23bafcc39b954cc2925dc142a3725a2e)
+        ;
+
+        
+    
+    
+            var marker_08171b08712f49b1bf720ec99201861c = L.marker(
+                [59.954224, 30.4917388999999],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_a96b470cae404e01b0ed48a350f16f55 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_08171b08712f49b1bf720ec99201861c.setIcon(icon_a96b470cae404e01b0ed48a350f16f55);
+        
+    
+        var popup_58c8342c7e434f4fa334c832ce0b7658 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_59b6f5a89a304e039de8a6feccb6acfd = $(`<div id="html_59b6f5a89a304e039de8a6feccb6acfd" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1037</h5><br><b> Амосов Михаил Иванович </b>: 13.79% <br><b> Беглов Александр Дмитриевич </b>: 66.72% <br><b> Тихонова Надежда Геннадьевна </b>: 17.41% <br><b> Явка </b>: 30.95 %<br><b> Количество проголосовавших</b>: 580 </div>`)[0];
+            popup_58c8342c7e434f4fa334c832ce0b7658.setContent(html_59b6f5a89a304e039de8a6feccb6acfd);
+        
+
+        marker_08171b08712f49b1bf720ec99201861c.bindPopup(popup_58c8342c7e434f4fa334c832ce0b7658)
+        ;
+
+        
+    
+    
+            var marker_d6691b8db93a41adb41a81cc9bdd3fa4 = L.marker(
+                [59.958544548902964, 30.487253359650737],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_5ec04643a46448dd8c331ac6b2f91a55 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF8000", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_d6691b8db93a41adb41a81cc9bdd3fa4.setIcon(icon_5ec04643a46448dd8c331ac6b2f91a55);
+        
+    
+        var popup_3190ed7138544d9fa2012884305ae157 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_b2f755b4ddbb49e6b421eabfc94157b8 = $(`<div id="html_b2f755b4ddbb49e6b421eabfc94157b8" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1038</h5><br><b> Амосов Михаил Иванович </b>: 16.91% <br><b> Беглов Александр Дмитриевич </b>: 62.87% <br><b> Тихонова Надежда Геннадьевна </b>: 18.38% <br><b> Явка </b>: 29.03 %<br><b> Количество проголосовавших</b>: 544 </div>`)[0];
+            popup_3190ed7138544d9fa2012884305ae157.setContent(html_b2f755b4ddbb49e6b421eabfc94157b8);
+        
+
+        marker_d6691b8db93a41adb41a81cc9bdd3fa4.bindPopup(popup_3190ed7138544d9fa2012884305ae157)
+        ;
+
+        
+    
+    
+            var marker_971b69b7bff543c1bfca7232e98d29da = L.marker(
+                [59.95877131088136, 30.488066941800803],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_5fcb0d60088f460cba993285dd3725bc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFEF00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_971b69b7bff543c1bfca7232e98d29da.setIcon(icon_5fcb0d60088f460cba993285dd3725bc);
+        
+    
+        var popup_9e03f5690f584c589514fba80d1ac404 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_f6325689393442a0abd41e06ff7487eb = $(`<div id="html_f6325689393442a0abd41e06ff7487eb" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1039</h5><br><b> Амосов Михаил Иванович </b>: 10.70% <br><b> Беглов Александр Дмитриевич </b>: 64.71% <br><b> Тихонова Надежда Геннадьевна </b>: 20.59% <br><b> Явка </b>: 19.96 %<br><b> Количество проголосовавших</b>: 374 </div>`)[0];
+            popup_9e03f5690f584c589514fba80d1ac404.setContent(html_f6325689393442a0abd41e06ff7487eb);
+        
+
+        marker_971b69b7bff543c1bfca7232e98d29da.bindPopup(popup_9e03f5690f584c589514fba80d1ac404)
+        ;
+
+        
+    
+    
+            var marker_c22f7d04abcc4028b1747d7e44cc97c1 = L.marker(
+                [59.958491189441034, 30.487844467199995],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_713c280416b44a47aa3e98d5965dfdc3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FA6039", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_c22f7d04abcc4028b1747d7e44cc97c1.setIcon(icon_713c280416b44a47aa3e98d5965dfdc3);
+        
+    
+        var popup_6f65fea93a8a4ebcb7147f69d3f105ad = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_22e1c100019948019a95bb56922e059e = $(`<div id="html_22e1c100019948019a95bb56922e059e" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1040</h5><br><b> Амосов Михаил Иванович </b>: 16.92% <br><b> Беглов Александр Дмитриевич </b>: 61.40% <br><b> Тихонова Надежда Геннадьевна </b>: 19.44% <br><b> Явка </b>: 38.15 %<br><b> Количество проголосовавших</b>: 715 </div>`)[0];
+            popup_6f65fea93a8a4ebcb7147f69d3f105ad.setContent(html_22e1c100019948019a95bb56922e059e);
+        
+
+        marker_c22f7d04abcc4028b1747d7e44cc97c1.bindPopup(popup_6f65fea93a8a4ebcb7147f69d3f105ad)
+        ;
+
+        
+    
+    
+            var marker_fa608ce27b154814906ffc5f67adf949 = L.marker(
+                [59.95820854759616, 30.487627023826228],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_36e516b5b16a48508595d68c57df72d7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FF4D00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_fa608ce27b154814906ffc5f67adf949.setIcon(icon_36e516b5b16a48508595d68c57df72d7);
+        
+    
+        var popup_8bc6deea33d2475898abc2be58464b00 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_362ca24a1cbd46bbb6011aefdd203a38 = $(`<div id="html_362ca24a1cbd46bbb6011aefdd203a38" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1041</h5><br><b> Амосов Михаил Иванович </b>: 14.54% <br><b> Беглов Александр Дмитриевич </b>: 61.17% <br><b> Тихонова Надежда Геннадьевна </b>: 21.44% <br><b> Явка </b>: 35.59 %<br><b> Количество проголосовавших</b>: 667 </div>`)[0];
+            popup_8bc6deea33d2475898abc2be58464b00.setContent(html_362ca24a1cbd46bbb6011aefdd203a38);
+        
+
+        marker_fa608ce27b154814906ffc5f67adf949.bindPopup(popup_8bc6deea33d2475898abc2be58464b00)
+        ;
+
+        
+    
+    
+            var marker_92f8d3cb28064513b11f190bca847adf = L.marker(
+                [59.959441, 30.487231],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_ef4f0c566e1f45dab6e0ab4bb5500546 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFA200", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_92f8d3cb28064513b11f190bca847adf.setIcon(icon_ef4f0c566e1f45dab6e0ab4bb5500546);
+        
+    
+        var popup_6cb999de323d4294afe31e6802a6f3c6 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_5e22ad0ba33545438f98941072b9aed8 = $(`<div id="html_5e22ad0ba33545438f98941072b9aed8" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1042</h5><br><b> Амосов Михаил Иванович </b>: 18.66% <br><b> Беглов Александр Дмитриевич </b>: 56.47% <br><b> Тихонова Надежда Геннадьевна </b>: 20.90% <br><b> Явка </b>: 21.45 %<br><b> Количество проголосовавших</b>: 402 </div>`)[0];
+            popup_6cb999de323d4294afe31e6802a6f3c6.setContent(html_5e22ad0ba33545438f98941072b9aed8);
+        
+
+        marker_92f8d3cb28064513b11f190bca847adf.bindPopup(popup_6cb999de323d4294afe31e6802a6f3c6)
+        ;
+
+        
+    
+    
+            var marker_029ba30b935d4cf697885ee3448811dc = L.marker(
+                [59.96402672774646, 30.48462834209915],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_35f8ddc9e8004430ac0c77134d4bd0ef = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FFEF00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_029ba30b935d4cf697885ee3448811dc.setIcon(icon_35f8ddc9e8004430ac0c77134d4bd0ef);
+        
+    
+        var popup_6b0e4c73740047b692d8d1ec3f874a3f = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_53baba1915df4fd4af8b2a2ff74dcac5 = $(`<div id="html_53baba1915df4fd4af8b2a2ff74dcac5" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1043</h5><br><b> Амосов Михаил Иванович </b>: 11.11% <br><b> Беглов Александр Дмитриевич </b>: 69.58% <br><b> Тихонова Надежда Геннадьевна </b>: 16.93% <br><b> Явка </b>: 20.17 %<br><b> Количество проголосовавших</b>: 378 </div>`)[0];
+            popup_6b0e4c73740047b692d8d1ec3f874a3f.setContent(html_53baba1915df4fd4af8b2a2ff74dcac5);
+        
+
+        marker_029ba30b935d4cf697885ee3448811dc.bindPopup(popup_6b0e4c73740047b692d8d1ec3f874a3f)
+        ;
+
+        
+    
+    
+            var marker_0d447facdc564475a7f86f7555b9eb32 = L.marker(
+                [59.976144466612425, 30.50664445230008],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_249a25bb1e64424dae89459a2002e2b8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FA6039", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_0d447facdc564475a7f86f7555b9eb32.setIcon(icon_249a25bb1e64424dae89459a2002e2b8);
+        
+    
+        var popup_7bd9c812d576426a80e15df1d56a7d3a = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_f6061ee0cf7841e79f77fe0690bfbee8 = $(`<div id="html_f6061ee0cf7841e79f77fe0690bfbee8" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1044</h5><br><b> Амосов Михаил Иванович </b>: 9.81% <br><b> Беглов Александр Дмитриевич </b>: 66.62% <br><b> Тихонова Надежда Геннадьевна </b>: 20.71% <br><b> Явка </b>: 39.17 %<br><b> Количество проголосовавших</b>: 734 </div>`)[0];
+            popup_7bd9c812d576426a80e15df1d56a7d3a.setContent(html_f6061ee0cf7841e79f77fe0690bfbee8);
+        
+
+        marker_0d447facdc564475a7f86f7555b9eb32.bindPopup(popup_7bd9c812d576426a80e15df1d56a7d3a)
+        ;
+
+        
+    
+    
+            var marker_41e3de101d204699b120ec657def75d3 = L.marker(
+                [59.97578700740134, 30.506609369700165],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_977ac03fa52d41a698b4e615bdc2b57d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#FA6039", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_41e3de101d204699b120ec657def75d3.setIcon(icon_977ac03fa52d41a698b4e615bdc2b57d);
+        
+    
+        var popup_9e85ec4dc1514379af4982d81f456dc6 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_96df8a607a3f41f8a1c2a1921e4cbb6e = $(`<div id="html_96df8a607a3f41f8a1c2a1921e4cbb6e" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1045</h5><br><b> Амосов Михаил Иванович </b>: 11.34% <br><b> Беглов Александр Дмитриевич </b>: 64.91% <br><b> Тихонова Надежда Геннадьевна </b>: 21.05% <br><b> Явка </b>: 39.54 %<br><b> Количество проголосовавших</b>: 741 </div>`)[0];
+            popup_9e85ec4dc1514379af4982d81f456dc6.setContent(html_96df8a607a3f41f8a1c2a1921e4cbb6e);
+        
+
+        marker_41e3de101d204699b120ec657def75d3.bindPopup(popup_9e85ec4dc1514379af4982d81f456dc6)
+        ;
+
+        
+    
+    
+            var marker_882e003157f54c0491f484f0cbeb1405 = L.marker(
+                [59.985978883681774, 30.517128652118114],
+                {}
+            ).addTo(map_d237bd246c554097b7f5cfcf20de396d);
+        
+    
+            var icon_523687be79ce4da6be0fea3380dfd01f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "#91FF00", "markerColor": "lightgray", "prefix": "glyphicon"}
+            );
+            marker_882e003157f54c0491f484f0cbeb1405.setIcon(icon_523687be79ce4da6be0fea3380dfd01f);
+        
+    
+        var popup_93e13c0f97d548c8abec9bb4b117f691 = L.popup({"height": 250, "maxWidth": 1000});
+
+        
+            var html_29d2a2f2008648d69f303f8d14adb04e = $(`<div id="html_29d2a2f2008648d69f303f8d14adb04e" style="width: 100.0%; height: 100.0%;"><h5> УИК № 1046</h5><br><b> Амосов Михаил Иванович </b>: 12.43% <br><b> Беглов Александр Дмитриевич </b>: 74.01% <br><b> Тихонова Надежда Геннадьевна </b>: 12.43% <br><b> Явка </b>: 9.445 %<br><b> Количество проголосовавших</b>: 177 </div>`)[0];
+            popup_93e13c0f97d548c8abec9bb4b117f691.setContent(html_29d2a2f2008648d69f303f8d14adb04e);
+        
+
+        marker_882e003157f54c0491f484f0cbeb1405.bindPopup(popup_93e13c0f97d548c8abec9bb4b117f691)
+        ;
+
+        
+    
+</script>
