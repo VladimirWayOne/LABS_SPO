@@ -56,21 +56,22 @@ for i in range(0, len(data.iloc[:, 0])):
                   popup=folium.Popup(popup_html(i, readbase, data), max_width=1000, height=250),
                   icon=folium.Icon(icon_color=color_change(int(data.iloc[i, 7])+int(data.iloc[i, 6])), icon='flag',
                                    color='lightgray')).add_to(map)
+
 legend_html =   '''
                 <div style="position: fixed; 
                             bottom: 50px; left: 50px; width: 125px; height: 350px; 
                             border:4px solid black; z-index:9999; font-size:14px;
                             background:#FFFFFF;
                             ">&nbsp; Цвет флага зависит от количества проголосовавших <br>
-                              &nbsp;<100 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:#1AFF00"></i><br>
-                              &nbsp;100-200 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:#91FF00"></i>
-                              &nbsp; 200-300 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:#BCFF00"></i>
-                              &nbsp; 300-400 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:#FFEF00"></i>
-                              &nbsp; 400-500 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:#FFA200"></i>
-                              &nbsp; 500-600 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:#FF8000"></i>
-                              &nbsp; 600-700 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:#FF4D00"></i>
-                              &nbsp; 700-800 &nbsp; <i class="fa fa-map-marker fa-2x" style="color:#FA6039"></i>
-                              &nbsp; 800< &nbsp; <i class="fa fa-map-marker fa-2x" style="color:#FF0000"></i>
+                              &nbsp;100 &nbsp; <i class="fa fa-flag fa-lg" style="color:#1AFF00"></i><br>
+                              &nbsp;100-200 &nbsp; <i class="fa fa-flag fa-lg" style="color:#91FF00"></i>
+                              &nbsp;200-300 &nbsp; <i class="fa fa-flag fa-lg" style="color:#BCFF00"></i>
+                              &nbsp;300-400 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FFEF00"></i>
+                              &nbsp;400-500 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FFA200"></i>
+                              &nbsp;500-600 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FF8000"></i>
+                              &nbsp;600-700 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FF4D00"></i>
+                              &nbsp;700-800 &nbsp; <i class="fa fa-flag fa-lg" style="color:#FA6039"></i>
+                              &nbsp;800< &nbsp; <i class="fa fa-flag fa-lg" style="color:#FF0000"></i>
                 </div>
                 '''
 
