@@ -5,6 +5,7 @@ from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
 import math
 import time
+from std_srvs.srv import Empty
 from turtlesim.msg import Color
 from turtlesim.srv import SetPen
 from turtlesim.srv import TeleportAbsolute
@@ -25,21 +26,21 @@ def background_color(r, g, b):
 def teleport(x,y,angle):
 	rospy.wait_for_service('turtle1/teleport_absolute')
 	turtle1_teleport = rospy.ServiceProxy('turtle1/teleport_absolute', TeleportAbsolute)
-	pen_color(255, 255, 255)
+	pen_color(255, 255, 255, 1)
 	turtle1_teleport(x, y, angle)
-	pen_color(204, 153, 255)
+	pen_color(204, 153, 255, 0)
 
 def next_num():
-    pen_color(255, 255, 255)
+    pen_color(255, 255, 255, 1)
     rotate(78.69006753, False)
-    move(1, 1.022, 1)
+    move(3, 1.022, 1)
     rotate(78.69006753, True)
-    pen_color(204, 153, 255)
+    pen_color(204, 153, 255, 0)
 
-def pen_color(r, g, b):
+def pen_color(r, g, b, off):
     rospy.wait_for_service('turtle1/set_pen')
     turtle1_set_pen = rospy.ServiceProxy('turtle1/set_pen', SetPen)
-    turtle1_set_pen(r, g, b, 2, 0)
+    turtle1_set_pen(r, g, b, 2, off)
 
 
 def rotate(angle, clockwise):
@@ -47,7 +48,7 @@ def rotate(angle, clockwise):
     yaw0 = yaw
     PI = 3.1415926535897
     vel_msg = Twist()
-    ang_speed = 60 * 2 * PI / 360
+    ang_speed = 90 * 2 * PI / 360
     rel_ang = angle * 2 * PI / 360
     if (clockwise):
         vel_msg.angular.z = -abs(ang_speed)
@@ -55,15 +56,18 @@ def rotate(angle, clockwise):
         vel_msg.angular.z = abs(ang_speed)
 
     angle_moved = 0
+    #loop_rate = rospy.Rate(120)
     cmd_vel_topic = 'turtle1/cmd_vel'
     velocity_publisher = rospy.Publisher(cmd_vel_topic, Twist, queue_size=10)
     while True:
         velocity_publisher.publish(vel_msg)
+        #loop_rate.sleep()
         angle_moved = abs(yaw - yaw0)
         if not (angle_moved < rel_ang):
             break
     vel_msg.angular.z = 0
     velocity_publisher.publish(vel_msg)
+    
 
 
 def callPoseback(pose_message):
@@ -86,20 +90,24 @@ def move(speed, distance, is_forward):
         velocity_message.linear.x = -abs(speed)
 
     distance_moved = 0.0
-    
+    #loop_rate = rospy.Rate(0.1)
     cmd_vel_topic = 'turtle1/cmd_vel'
     velocity_publisher = rospy.Publisher(cmd_vel_topic, Twist, queue_size=10)
 
     while True:
-        # rospy.loginfo('Turtle moves forward')
+        #rospy.loginfo('Turtle moves forward')
         velocity_publisher.publish(velocity_message)
-        distance_moved = abs(0.4 * math.sqrt(((x - x0) ** 2) + ((y - y0) ** 2)))
+
+        #loop_rate.sleep()
+
+        distance_moved = abs(0.4 * math.sqrt(((x - x0) ** 2) + ((y - y0) ** 2))) 
         # print distance_moved
         if not (distance_moved < distance):
             #  rospy.loginfo('reached')
             break
     velocity_message.linear.x = 0
     velocity_publisher.publish(velocity_message)
+    
 
 
 def square(side):
@@ -112,96 +120,94 @@ def square(side):
     move(1, side, True)
     
 def two():
-    move(1, 0.5, 1)
+    move(3, 0.5, 1)
     rotate(90, True)
-    move(1, 0.5, 1)
+    move(3, 0.5, 1)
     rotate(90, True)
-    move(1, 0.5, 1)
+    move(3, 0.5, 1)
     rotate(90, False)
-    move(1, 0.5, 1)
+    move(3, 0.5, 1)
     rotate(90, False)
-    move(1, 0.5, 1)
+    move(3, 0.5, 1)
 
 def four():
 	rotate(90, True)
-	move(1, 0.5, 1)
+	move(3, 0.5, 1)
 	rotate(90, False)
-	move(1, 0.5, 1)
+	move(3, 0.5, 1)
 	rotate(90, False)
-	move(1, 0.5, 1)
-	move(2, 1, False)
+	move(3, 0.5, 1)
+	move(3, 1, False)
 	rotate(90, True)
 
 def seven():
-	move(1, 0.5, 1)
+	move(3, 0.5, 1)
 	rotate(116.56505, True)
-	move(1,1.118034,1)
+	move(3,1.118034,1)
 	rotate(153.434395, True)
-	pen_color(255,255,255)
-	move(1, 0.5, 1)
+	pen_color(255,255,255, 1)
+	move(3, 0.5, 1)
 	rotate(90, True)
-	pen_color(204, 153, 255)
-	move(1, 0.5, 1)
+	pen_color(204, 153, 255, 0)
+	move(3, 0.5, 1)
 	rotate(90, True)
-	pen_color(255,255,255)
-	move(1, 0.5, 1)
+	pen_color(255,255,255, 1)
+	move(3, 0.5, 1)
 	rotate(90, False)
 
 def three():
-	move(1, 0.5, 1)
+	move(3, 0.5, 1)
 	rotate(90, True)
-	move(1, 0.5, 1)
+	move(3, 0.5, 1)
 	rotate(90, True)
-	move(1, 0.5, 1)
-	move(1, 0.5, False)
+	move(3, 0.5, 1)
+	move(3, 0.5, False)
 	rotate(90, False)
-	move(1, 0.5, 1)
+	move(3, 0.5, 1)
 	rotate(90, True)
-	move(1, 0.5, 1)
-	move(1, 0.5, False) 
+	move(3, 0.5, 1)
+	move(3, 0.5, False) 
 	rotate(180, False)
 
 def zero():
-	move(1, 0.5, 1)
+	move(3, 0.5, 1)
 	rotate(90, True)
-	move(2, 1, 1)
+	move(3, 1, 1)
 	rotate(90, True)
-	move(1, 0.5, 1)
+	move(3, 0.5, 1)
 	rotate(90, True)
-	move(2, 1, 1)
+	move(3, 1, 1)
 	rotate(90, True)
 	rotate(63.4349488, True)
-	pen_color(255,255,255)
-	move(1, 1.118033989,1)
+	pen_color(255,255,255, 1)
+	move(3, 1.118033989,1)
 	rotate(63.4349488, False)
 	
 	
     
-    
 
-if __name__ == '__main__':
-    try:
 
-        rospy.init_node('Turtlesim_number', anonymous=True)
-        position_topic = 'turtle1/pose'
-        pose_subscriber = rospy.Subscriber(position_topic, Pose, callPoseback)
-        time.sleep(1)  
-	background_color(255,255,255)
-	teleport(0.2, 5, 0)
-        pen_color(204, 153, 255)
-	
-        two()
-	next_num()
-	four()
-	next_num()
-	four()
-	next_num()
-	seven()
-	next_num()
-	three()
-	next_num()
-	zero()
-	next_num()
-
-    except rospy.ROSInterruptException:
-        rospy.loginfo('node terminated')
+print(x,y,yaw)
+rospy.init_node('Turtlesim_number', anonymous=False, disable_signals=True)
+position_topic = 'turtle1/pose'
+pose_subscriber = rospy.Subscriber(position_topic, Pose, callPoseback)
+time.sleep(1)  
+background_color(255,255,255)
+teleport(0.2, 5, 0)
+pen_color(204, 153, 255, 0)
+print(x, y, yaw)
+two()
+next_num()
+four()
+next_num()
+four()
+next_num()
+seven()
+next_num()
+three()
+next_num()
+zero()
+next_num()
+print(x,y,yaw)
+#except rospy.ROSInterruptException:
+#rospy.loginfo('node terminated')
