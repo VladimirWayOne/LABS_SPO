@@ -6,7 +6,11 @@ Save .world and .png wherever you want, but note that the path to the image is i
 ```shell
 bitmap "/home/vladimir/dev/labsros/architect_lab/floor_cad.png"
 ```
-
+Terminal:
+```bash
+roscore
+```
+Open new terminal
 ```shell
 rosrun stage_ros stageros <path to .world>
 ```
