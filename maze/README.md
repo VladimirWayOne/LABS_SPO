@@ -1,6 +1,7 @@
 # LABS_SPO/maze
 
 Save python file in $ROS_PACKAGE_PATH/<your_directory>/src
+
 Save .world and .png wherever you want, but note that the path to the image is indicated in .world (line 64)
 
 ```shell
