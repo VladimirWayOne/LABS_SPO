@@ -54,7 +54,7 @@ def take_action():
 	state_description = ''
 
 
-	if regions['front'] > 0.8 and regions['fleft']>0.4 and regions['fright']>0.4:
+	if regions['front'] > 0.9 and regions['fleft']>0.4 and regions['fright']>0.4:
 		state_description = 'case 1 - forward'
 		change_state(0)
 	elif regions['right'] > regions['left']:
@@ -91,7 +91,7 @@ def main():
 	pub_ = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 	sub = rospy.Subscriber('/base_scan', LaserScan, clbk_laser)
 
-	rate = rospy.Rate(50)
+	#rate = rospy.Rate(50)
 	while not rospy.is_shutdown():
 		msg = Twist()
 		if state_ == 2:
@@ -105,7 +105,7 @@ def main():
 			rospy.logerr('Unknown state!')
 		
 		pub_.publish(msg)
-		rate.sleep()
+		#rate.sleep()
 	
 main()
 
