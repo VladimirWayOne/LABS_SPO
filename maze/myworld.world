@@ -51,10 +51,10 @@ interval_sim 35  # simulation timestep in milliseconds
 
 window
 ( 
-  size [ 745.000 448.000 ] 
+  size [ 780.000 480.000 ] 
 
   rotate [ 0.000 0 ]
-  scale 28.806 
+  scale 50.806 
 )
 
 # load an environment bitmap
@@ -62,9 +62,9 @@ floorplan
 ( 
   name "maze"
   bitmap "/home/vladimir/dev/labsros/architect_lab/floor_cad.png"
- size [80 11.5 0.5]
+ size [80 14 0.8]
   pose [ 0 0 0 0 ]
 )
 
 # throw in a robot
-erratic( pose [ -31 -3.3 0 -180 ] name "era" color "blue")
+erratic( pose [ -31 -4.5 0 -180 ] name "VlaRek" color "blue")
