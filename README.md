@@ -14,3 +14,4 @@
 [Лабораторная работа №6](https://github.com/VladimirWayOne/LABS_SPO/tree/master/ros)
 
 [Лабораторная работа №7](https://github.com/VladimirWayOne/LABS_SPO/tree/master/maze)
+way_One
